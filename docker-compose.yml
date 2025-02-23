@@ -259,7 +259,7 @@ services:
 
   # PiHole container
   pihole:
-    image: pihole/pihole:2025.02.4
+    image: pihole/pihole:2025.02.3
     container_name: pihole
     restart: always
     hostname:
@@ -272,7 +272,8 @@ services:
       - "${ROOT_IP}:53:53/udp"
     environment:
       TZ: Europe/Sofia
-      WEBPASSWORD: ${PIHOLE_PASSWORD}
+      FTLCONF_webserver_api_password: ${PIHOLE_PASSWORD}
+      FTLCONF_dns_listeningMode: all
       VIRTUAL_HOST: pihole.${ROOT_HOST}
       LETSENCRYPT_HOST: pihole.${ROOT_HOST}
       VIRTUAL_PORT: 80
