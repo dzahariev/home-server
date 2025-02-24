@@ -95,8 +95,8 @@
 <body>
   <script>
     function open(subdomain) {
-      var part_parts = window.location.hostname.split('.').reverse();
-      var root_domain = part_parts[1] + '.' + part_parts[0];
+      var path_parts = window.location.hostname.split('.').reverse();
+      var root_domain = path_parts[1] + '.' + path_parts[0];
       var a = document.createElement('a');                                
       a.href = "https://" + subdomain + "." + root_domain;         
       a.rel = 'noreferrer';                                               
