@@ -431,7 +431,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.6.8
+    image: dzahariev/domo:1.7.0
     container_name: domo
     restart: always
     hostname:
