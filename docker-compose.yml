@@ -414,7 +414,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.7.0
+    image: dzahariev/domo-migrations:1.7.1
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -431,7 +431,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.7.0
+    image: dzahariev/domo:1.7.1
     container_name: domo
     restart: always
     hostname:
