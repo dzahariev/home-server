@@ -311,6 +311,25 @@ services:
     depends_on:
       - acme-companion
 
+  # Folding@Home container
+  fold:
+    image: linuxserver/foldingathome:8.4.9
+    container_name: fold
+    restart: always
+    hostname:
+      fold.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/fold:/config"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: fold.${ROOT_HOST}
+      LETSENCRYPT_HOST: fold.${ROOT_HOST}
+      VIRTUAL_PORT: 7396
+    depends_on:
+      - acme-companion
+
   # Postgres DB container for Keycloak
   keycloakdb:
     image: postgres:17.4-alpine3.20
