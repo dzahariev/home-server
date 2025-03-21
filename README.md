@@ -19,7 +19,6 @@ Include setup of:
 - FreshRSS (on freshrss subdomain)
 - PiHole (on pihole subdomain)
 - WireGuard (on vpn subdomain)
-- Folding@Home (on fold subdomain)
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
 ## Prepare
