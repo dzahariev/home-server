@@ -195,7 +195,7 @@ services:
 
   # Plex container
   plex:
-    image: linuxserver/plex:1.41.5
+    image: linuxserver/plex:1.41.6
     container_name: plex
     restart: always
     hostname:
