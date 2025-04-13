@@ -368,7 +368,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:3.1
+    image: dzahariev/invval:3.2
     container_name: invval
     restart: always
     hostname:
@@ -414,7 +414,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.8.0
+    image: dzahariev/domo-migrations:1.8.2
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -431,7 +431,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.8.0
+    image: dzahariev/domo:1.8.2
     container_name: domo
     restart: always
     hostname:
@@ -457,7 +457,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.19
+    image: dzahariev/taskboard:1.21
     container_name: taskboard
     restart: always
     hostname:
