@@ -238,6 +238,27 @@ services:
     depends_on:
       - acme-companion
 
+  # Postgres DB container for NextCloud
+  nextclouddb:
+    image: postgres:17.4-alpine3.20
+    container_name: nextclouddb
+    restart: always
+    expose:
+      - "5432" 
+    volumes:
+      - "${DATA_DIR}/nextclouddb:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${NEXTCLOUD_DB_NAME}
+      POSTGRES_USER: ${NEXTCLOUD_DB_USER}
+      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${NEXTCLOUD_DB_USER}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
   # NextCloud container
   nextcloud:
     image: linuxserver/nextcloud:31.0.4
@@ -252,11 +273,15 @@ services:
       PUID: 1000
       PGID: 1000
       TZ: Europe/Sofia
+      POSTGRES_DB: ${NEXTCLOUD_DB_NAME}
+      POSTGRES_USER:  ${NEXTCLOUD_DB_USER}
+      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      POSTGRES_HOST: nextclouddb
       VIRTUAL_HOST: nextcloud.${ROOT_HOST}
       LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
-      VIRTUAL_PORT: 443
+      VIRTUAL_PORT: 80
     depends_on:
-      - acme-companion
+      - nextclouddb
 
   # FreshRSS container
   freshrss:
