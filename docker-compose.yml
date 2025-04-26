@@ -257,26 +257,56 @@ services:
     depends_on:
       - acme-companion
 
-  # NextCloud container
-  nextcloud:
-    image: linuxserver/nextcloud:31.0.4
-    container_name: nextcloud
+  # Moodle MariaDB container
+  moodledb:
+    image: bitnami/mariadb:11.7.2
+    container_name: moodledb
     restart: always
     hostname:
-      nextcloud.${ROOT_HOST}
+      moodledb
     volumes:
-      - "${DATA_DIR}/nextcloud/config:/config"
-      - "${DATA_DIR}/nextcloud/data:/data"
-    environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: nextcloud.${ROOT_HOST}
-      LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
-      VIRTUAL_PORT: 80
-    depends_on:
-      - acme-companion
+      - "${DATA_DIR}/moodledb:/var/lib/mysql"
+    environment: 
+      ALLOW_EMPTY_PASSWORD: no
+      MARIADB_ROOT_PASSWORD: ${MOODLE_DATABASE_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MOODLE_DATABASE_NAME}
+      MARIADB_USER: ${MOODLE_DATABASE_USER}
+      MARIADB_PASSWORD: ${MOODLE_DATABASE_PASSWORD}
+      MARIADB_CHARACTER_SET: utf8mb4
+      MARIADB_COLLATE: utf8mb4_unicode_ci
 
+ # Moodle container
+  moodle:
+    image: bitnami/moodle:4.5.4
+    container_name: moodle
+    restart: always
+    hostname:
+      moodle.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/moodle/config:/bitnami/moodle"
+      - "${DATA_DIR}/moodle/data:/bitnami/moodledata"
+    environment:
+      MOODLE_DATABASE_TYPE: mariadb
+      MOODLE_DATABASE_USER: ${MOODLE_DATABASE_USER}
+      MOODLE_DATABASE_PASSWORD: ${MOODLE_DATABASE_PASSWORD}
+      MOODLE_DATABASE_NAME: ${MOODLE_DATABASE_NAME}
+      MOODLE_DATABASE_HOST: moodledb
+      MOODLE_EMAIL: moodle@${ROOT_HOST}
+      MOODLE_SMTP_HOST: ${MOODLE_SMTP_HOST}
+      MOODLE_SMTP_PORT: ${MOODLE_SMTP_PORT}
+      MOODLE_SMTP_USER: ${MOODLE_SMTP_USER}
+      MOODLE_SMTP_PASSWORD: ${MOODLE_SMTP_PASSWORD}
+      MOODLE_SMTP_PROTOCOL: ${MOODLE_SMTP_PROTOCOL}
+      MOODLE_USERNAME: ${MOODLE_USERNAME}
+      MOODLE_PASSWORD: ${MOODLE_PASSWORD}
+      MOODLE_HOST: moodle.${ROOT_HOST}
+      MOODLE_SITE_NAME: moodle.${ROOT_HOST}
+      VIRTUAL_HOST: moodle.${ROOT_HOST}
+      LETSENCRYPT_HOST: moodle.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - moodledb
+  
   # PiHole container
   pihole:
     image: pihole/pihole:2025.04.0
