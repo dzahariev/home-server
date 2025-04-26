@@ -521,7 +521,7 @@ services:
 
   # MariaDB container
   mariadb:
-    image: mariadb:10.11.11
+    image: mariadb:11.7.2
     container_name: mariadb
     restart: always
     volumes:
