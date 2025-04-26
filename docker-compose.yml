@@ -238,6 +238,25 @@ services:
     depends_on:
       - acme-companion
 
+  # FreshRSS container
+  freshrss:
+    image: linuxserver/freshrss:1.26.1
+    container_name: freshrss
+    restart: always
+    hostname:
+      freshrss.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/freshrss:/config"
+    environment:
+      UID: 1000
+      GID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: freshrss.${ROOT_HOST}
+      LETSENCRYPT_HOST: freshrss.${ROOT_HOST}
+      VIRTUAL_PORT: 80
+    depends_on:
+      - acme-companion
+
   # NextCloud container
   nextcloud:
     image: linuxserver/nextcloud:31.0.4
@@ -254,25 +273,6 @@ services:
       TZ: Europe/Sofia
       VIRTUAL_HOST: nextcloud.${ROOT_HOST}
       LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
-      VIRTUAL_PORT: 80
-    depends_on:
-      - acme-companion
-
-  # FreshRSS container
-  freshrss:
-    image: linuxserver/freshrss:1.26.1
-    container_name: freshrss
-    restart: always
-    hostname:
-      freshrss.${ROOT_HOST}
-    volumes:
-      - "${DATA_DIR}/freshrss:/config"
-    environment:
-      UID: 1000
-      GID: 1000
-      TZ: Europe/Sofia
-      VIRTUAL_HOST: freshrss.${ROOT_HOST}
-      LETSENCRYPT_HOST: freshrss.${ROOT_HOST}
       VIRTUAL_PORT: 80
     depends_on:
       - acme-companion
