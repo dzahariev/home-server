@@ -256,7 +256,7 @@ services:
       LETSENCRYPT_HOST: nextcloud.${ROOT_HOST}
       VIRTUAL_PORT: 80
     depends_on:
-      - nextclouddb
+      - acme-companion
 
   # FreshRSS container
   freshrss:
