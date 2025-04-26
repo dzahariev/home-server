@@ -262,6 +262,8 @@ services:
     image: mariadb:11.7.2
     container_name: moodledb
     restart: always
+    hostname:
+      moodledb
     volumes:
       - "${DATA_DIR}/moodledb:/var/lib/mysql"
     environment: 
@@ -269,6 +271,8 @@ services:
       MARIADB_DATABASE: ${MOODLE_DATABASE_NAME}
       MARIADB_USER: ${MOODLE_DATABASE_USER}
       MARIADB_PASSWORD: ${MOODLE_DATABASE_PASSWORD}
+      MARIADB_CHARACTER_SET: utf8mb4
+      MARIADB_COLLATE: utf8mb4_unicode_ci
 
  # Moodle container
   moodle:
@@ -281,6 +285,7 @@ services:
       - "${DATA_DIR}/moodle/config:/bitnami/moodle"
       - "${DATA_DIR}/moodle/data:/bitnami/moodledata"
     environment:
+      MOODLE_DATABASE_TYPE: mariadb
       MOODLE_DATABASE_USER: ${MOODLE_DATABASE_USER}
       MOODLE_DATABASE_PASSWORD: ${MOODLE_DATABASE_PASSWORD}
       MOODLE_DATABASE_NAME: ${MOODLE_DATABASE_NAME}
@@ -294,6 +299,7 @@ services:
       MOODLE_USERNAME: ${MOODLE_USERNAME}
       MOODLE_PASSWORD: ${MOODLE_PASSWORD}
       MOODLE_HOST: moodle.${ROOT_HOST}
+      MOODLE_SITE_NAME: moodle.${ROOT_HOST}
       VIRTUAL_HOST: moodle.${ROOT_HOST}
       LETSENCRYPT_HOST: moodle.${ROOT_HOST}
       VIRTUAL_PORT: 8080
