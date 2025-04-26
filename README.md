@@ -14,7 +14,7 @@ Include setup of:
 - Blackbox-exporteer (not exposed, used from Prometheus through internal network)
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
-- Moodle (in moodle subdomain)
+- Moodle (on moodle subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
