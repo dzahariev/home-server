@@ -259,7 +259,7 @@ services:
 
   # Moodle MariaDB container
   moodledb:
-    image: mariadb:11.7.2
+    image: bitnami/mariadb:11.7.2
     container_name: moodledb
     restart: always
     hostname:
@@ -267,6 +267,7 @@ services:
     volumes:
       - "${DATA_DIR}/moodledb:/var/lib/mysql"
     environment: 
+      ALLOW_EMPTY_PASSWORD: no
       MARIADB_ROOT_PASSWORD: ${MOODLE_DATABASE_ROOT_PASSWORD}
       MARIADB_DATABASE: ${MOODLE_DATABASE_NAME}
       MARIADB_USER: ${MOODLE_DATABASE_USER}
