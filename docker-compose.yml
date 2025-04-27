@@ -311,6 +311,25 @@ services:
     depends_on:
       - moodledb
   
+   # OpenProject container
+  openproject:
+    image: openproject/openproject:15.5.0
+    container_name: openproject
+    restart: always
+    hostname:
+      openproject.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/openproject/pgdata:/var/openproject/pgdata"
+      - "${DATA_DIR}/openproject/assets:/var/openproject/assets"
+    environment:
+      OPENPROJECT_HOST__NAME: openproject.${ROOT_HOST}
+      OPENPROJECT_HSTS: false
+      VIRTUAL_HOST: openproject.${ROOT_HOST}
+      LETSENCRYPT_HOST: openproject.${ROOT_HOST}
+      VIRTUAL_PORT: 80
+    depends_on:
+      - acme-companion
+
   # PiHole container
   pihole:
     image: pihole/pihole:2025.04.0

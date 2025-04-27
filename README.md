@@ -15,6 +15,7 @@ Include setup of:
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
 - Moodle (on moodle subdomain)
+- OpenProject (on openproject subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
