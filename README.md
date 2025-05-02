@@ -14,7 +14,6 @@ Include setup of:
 - Blackbox-exporteer (not exposed, used from Prometheus through internal network)
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
-- Moodle (on moodle subdomain)
 - OpenProject (on openproject subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
