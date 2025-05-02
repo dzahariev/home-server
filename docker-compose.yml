@@ -280,7 +280,7 @@ services:
 
  # Moodle container
   moodle:
-    image: bitnami/moodle:4.5.4
+    image: bitnami/moodle:5.0.0
     container_name: moodle
     restart: always
     hostname:
