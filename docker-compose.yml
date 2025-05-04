@@ -240,7 +240,7 @@ services:
 
   # FreshRSS container
   freshrss:
-    image: linuxserver/freshrss:1.26.1
+    image: linuxserver/freshrss:1.26.2
     container_name: freshrss
     restart: always
     hostname:
