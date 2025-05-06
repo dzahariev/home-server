@@ -259,7 +259,7 @@ services:
   
    # OpenProject container
   openproject:
-    image: openproject/openproject:15.5.0
+    image: openproject/openproject:15.5.1
     container_name: openproject
     restart: always
     hostname:
