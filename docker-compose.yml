@@ -433,7 +433,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.8.3
+    image: dzahariev/domo-migrations:1.8.4
     container_name: domo-migrations
     restart: on-failure
     environment:
@@ -450,7 +450,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.8.3
+    image: dzahariev/domo:1.8.4
     container_name: domo
     restart: always
     hostname:
@@ -476,7 +476,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.22
+    image: dzahariev/taskboard:1.23
     container_name: taskboard
     restart: always
     hostname:
