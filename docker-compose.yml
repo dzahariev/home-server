@@ -19,7 +19,7 @@ services:
 
   # Letsencrypt companion container
   acme-companion:
-    image: nginxproxy/acme-companion:2.5.2
+    image: nginxproxy/acme-companion:2.6.0
     container_name: acme-companion
     restart: always
     volumes:
