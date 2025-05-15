@@ -281,12 +281,12 @@ services:
 
    # OpenProjectMigrations container
   openproject-migrations:
-    image: openproject/openproject:15.5.1
+    image: openproject/openproject:15.5.1-slim
     container_name: openproject-migrations
     restart: on-failure
     environment:
       DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb:${OPENPROJECT_DB_PORT}/${OPENPROJECT_DB_NAME}
-    entrypoint: ["rake", "db:migrate"]
+    entrypoint: ["rails", "db:migrate", "RAILS_ENV=production"]
     depends_on:
       openprojectdb:
           condition: service_healthy
