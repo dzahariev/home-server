@@ -295,6 +295,7 @@ services:
       VIRTUAL_HOST: openproject.${ROOT_HOST}
       LETSENCRYPT_HOST: openproject.${ROOT_HOST}
       VIRTUAL_PORT: 80
+    command: ["openproject", "run", "configure"]
     depends_on:
       openprojectdb:
           condition: service_healthy
