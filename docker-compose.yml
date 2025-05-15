@@ -291,7 +291,7 @@ services:
     environment:
       OPENPROJECT_HOST__NAME: openproject.${ROOT_HOST}
       OPENPROJECT_HSTS: false
-      POSTGRES_DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb/${OPENPROJECT_DB_NAME}
+      DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb/${OPENPROJECT_DB_NAME}
       VIRTUAL_HOST: openproject.${ROOT_HOST}
       LETSENCRYPT_HOST: openproject.${ROOT_HOST}
       VIRTUAL_PORT: 80
