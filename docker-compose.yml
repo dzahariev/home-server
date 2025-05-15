@@ -279,6 +279,18 @@ services:
     depends_on:
       - acme-companion
 
+   # OpenProjectMigrations container
+  openproject-migrations:
+    image: openproject/openproject:15.5.1
+    container_name: openproject-migrations
+    restart: on-failure
+    environment:
+      DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb:${OPENPROJECT_DB_PORT}/${OPENPROJECT_DB_NAME}
+    entrypoint: ["rake", "db:migrate"]
+    depends_on:
+      openprojectdb:
+          condition: service_healthy
+
    # OpenProject container
   openproject:
     image: openproject/openproject:15.5.1-slim
@@ -295,10 +307,8 @@ services:
       VIRTUAL_HOST: openproject.${ROOT_HOST}
       LETSENCRYPT_HOST: openproject.${ROOT_HOST}
       VIRTUAL_PORT: 80
-    command: ["RAILS_ENV=production", "bundle", "exec", "rake", "db:migrate"]
     depends_on:
-      openprojectdb:
-          condition: service_healthy
+      - openproject-migrations
 
   # PiHole container
   pihole:
