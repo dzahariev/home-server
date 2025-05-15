@@ -286,7 +286,7 @@ services:
     restart: on-failure
     environment:
       DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb:${OPENPROJECT_DB_PORT}/${OPENPROJECT_DB_NAME}
-    entrypoint: ["rails", "db:migrate", "RAILS_ENV=production"]
+    entrypoint: ["/bin/rails", "db:migrate", "RAILS_ENV=production"]
     depends_on:
       openprojectdb:
           condition: service_healthy
