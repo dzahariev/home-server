@@ -281,7 +281,7 @@ services:
 
    # OpenProject container
   openproject:
-    image: openproject/openproject:15.5.1
+    image: openproject/openproject:15.5.1-slim
     container_name: openproject
     restart: always
     hostname:
@@ -295,7 +295,7 @@ services:
       VIRTUAL_HOST: openproject.${ROOT_HOST}
       LETSENCRYPT_HOST: openproject.${ROOT_HOST}
       VIRTUAL_PORT: 80
-    command: ["openproject", "run", "configure"]
+    command: ["RAILS_ENV=production", "bundle", "exec", "rake", "db:migrate"]
     depends_on:
       openprojectdb:
           condition: service_healthy
