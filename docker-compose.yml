@@ -257,24 +257,47 @@ services:
     depends_on:
       - acme-companion
   
+  # Postgres DB container for OpenProject
+  openprojectdb:
+    image: postgres:17.5-alpine3.20
+    container_name: openprojectdb
+    restart: always
+    expose:
+      - "${OPENPROJECT_DB_PORT}" 
+    volumes:
+      - "${DATA_DIR}/openprojectdb:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${OPENPROJECT_DB_NAME}
+      POSTGRES_USER: ${OPENPROJECT_DB_USER}
+      POSTGRES_PASSWORD: ${OPENPROJECT_DB_PASSWORD}
+    command: ["-p", "${OPENPROJECT_DB_PORT}"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${OPENPROJECT_DB_USER} -p ${OPENPROJECT_DB_PORT}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
    # OpenProject container
   openproject:
-    image: openproject/openproject:15.5.1
+    image: openproject/openproject:15.5.1-slim
     container_name: openproject
     restart: always
     hostname:
       openproject.${ROOT_HOST}
     volumes:
-      - "${DATA_DIR}/openproject/pgdata:/var/openproject/pgdata"
       - "${DATA_DIR}/openproject/assets:/var/openproject/assets"
     environment:
       OPENPROJECT_HOST__NAME: openproject.${ROOT_HOST}
       OPENPROJECT_HSTS: false
+      POSTGRES_DATABASE_URL: postgresql://${OPENPROJECT_DB_USER}:${OPENPROJECT_DB_PASSWORD}@openprojectdb/${OPENPROJECT_DB_NAME}
       VIRTUAL_HOST: openproject.${ROOT_HOST}
       LETSENCRYPT_HOST: openproject.${ROOT_HOST}
       VIRTUAL_PORT: 80
     depends_on:
-      - acme-companion
+      openprojectdb:
+          condition: service_healthy
 
   # PiHole container
   pihole:
