@@ -14,7 +14,7 @@ Include setup of:
 - Blackbox-exporteer (not exposed, used from Prometheus through internal network)
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
-- OpenProject (on openproject subdomain)
+- YouTrack (on youtrack subdomain)
 - Plex (on plex subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)

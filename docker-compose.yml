@@ -257,22 +257,22 @@ services:
     depends_on:
       - acme-companion
   
-   # OpenProject container
-  openproject:
-    image: openproject/openproject:15.5.1
-    container_name: openproject
+  # YouTrack container
+  youtrack:
+    image: jetbrains/youtrack:2025.1.74704
+    container_name: youtrack
     restart: always
     hostname:
-      openproject.${ROOT_HOST}
+      youtrack.${ROOT_HOST}
     volumes:
-      - "${DATA_DIR}/openproject/pgdata:/var/openproject/pgdata"
-      - "${DATA_DIR}/openproject/assets:/var/openproject/assets"
+      - "${DATA_DIR}/youtrack/data:/opt/youtrack/data"
+      - "${DATA_DIR}/youtrack/conf:/opt/youtrack/conf"
+      - "${DATA_DIR}/youtrack/logs:/opt/youtrack/logs"
+      - "${DATA_DIR}/youtrack/backups:/opt/youtrack/backups"
     environment:
-      OPENPROJECT_HOST__NAME: openproject.${ROOT_HOST}
-      OPENPROJECT_HSTS: false
-      VIRTUAL_HOST: openproject.${ROOT_HOST}
-      LETSENCRYPT_HOST: openproject.${ROOT_HOST}
-      VIRTUAL_PORT: 80
+      VIRTUAL_HOST: youtrack.${ROOT_HOST}
+      LETSENCRYPT_HOST: youtrack.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
 
