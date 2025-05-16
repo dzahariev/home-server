@@ -270,8 +270,6 @@ services:
       - "${DATA_DIR}/youtrack/logs:/opt/youtrack/logs"
       - "${DATA_DIR}/youtrack/backups:/opt/youtrack/backups"
     environment:
-      OPENPROJECT_HOST__NAME: youtrack.${ROOT_HOST}
-      OPENPROJECT_HSTS: false
       VIRTUAL_HOST: youtrack.${ROOT_HOST}
       LETSENCRYPT_HOST: youtrack.${ROOT_HOST}
       VIRTUAL_PORT: 8080
