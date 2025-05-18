@@ -140,7 +140,7 @@ services:
     container_name: promtail
     restart: always
     volumes:
-      - "./loki/promtail-config.yaml:/etc/promtail/config.yaml"
+      - "./loki/promtail-config.yaml:/etc/promtail/promtail-config.yaml"
       - /var/log:/var/log
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
