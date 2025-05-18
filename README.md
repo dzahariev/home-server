@@ -12,6 +12,8 @@ Include setup of:
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exporter (not exposed, used from Prometheus through internal network)
 - Blackbox-exporteer (not exposed, used from Prometheus through internal network)
+- Promtail (not exposed, used from Loki through internal network)
+- Loki (not exposed, used from Grafana through internal network)
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
 - YouTrack (on youtrack subdomain)
