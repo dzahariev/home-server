@@ -13,7 +13,7 @@ common:
 
 schema_config:
   configs:
-    - from: 2025-05-19  # Set to a future date to avoid conflicts with existing data
+    - from: "2025-05-19"
       store: tsdb
       object_store: filesystem
       schema: v13
