@@ -125,6 +125,7 @@ services:
     depends_on:
       - acme-companion
 
+  # Loki container for logs
   loki:
     image: grafana/loki:3.5.0
     container_name: loki
@@ -136,6 +137,7 @@ services:
       - ${MONITORING_DATA_DIR}/loki:/var/lib/loki
     command: -config.file=/etc/loki/loki-config.yaml
 
+  # Promtail container for logs aggregation
   promtail:
     image: grafana/promtail:3.5.0
     container_name: promtail
