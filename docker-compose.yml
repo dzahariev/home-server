@@ -132,18 +132,19 @@ services:
     ports:
       - 3100:3100
     volumes:
-      - "./loki/loki-config.yaml:/etc/loki/loki-config.yaml"
-      - "${MONITORING_DATA_DIR}/loki:/var/lib/loki"
+      - ./loki/loki-config.yaml:/etc/loki/loki.yaml
+      - ${MONITORING_DATA_DIR}/loki:/var/lib/loki
 
   promtail:
     image: grafana/promtail:3.5.0
     container_name: promtail
     restart: always
     volumes:
-      - "./loki/promtail-config.yaml:/etc/promtail/promtail-config.yaml"
+      - ./loki/promtail-config.yaml:/etc/promtail/promtail-config.yaml
       - /var/log:/var/log
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/promtail-config.yaml
     depends_on:
       - loki
 
