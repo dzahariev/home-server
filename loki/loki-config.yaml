@@ -1,0 +1,34 @@
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_listen_port: 9095
+
+common:
+  path_prefix: /var/lib/loki
+  replication_factor: 1
+  storage:
+    filesystem:
+      chunks_directory: /tmp/loki/chunks
+      rules_directory: /tmp/loki/rules
+  ring:
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: "2025-05-18"
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+storage_config:
+  filesystem:
+    directory: /var/lib/loki/chunks
+
+compactor:
+  working_directory: /var/lib/loki/compactor
+  compaction_interval: 5m
