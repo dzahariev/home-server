@@ -15,10 +15,10 @@ scrape_configs:
           - localhost
         labels:
           job: docker
-          __path__: /var/lib/docker/containers/*/*.log
+          __path__: /var/lib/docker/containers/*/*-json.log
     pipeline_stages:
       - regex:
-          expression: '^/var/lib/docker/containers/.*/(?P<filename>[^/]+)\.log$'
-          source: filename
+          expression: '/var/lib/docker/containers/.*/(?P<filename>[^/]+)-json\.log$'
+          source: __path__
       - labels:
           filename
