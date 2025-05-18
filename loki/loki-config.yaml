@@ -6,11 +6,10 @@ server:
 
 common:
   path_prefix: /var/lib/loki
+  replication_factor: 1
   ring:
-    instance_addr: 127.0.0.1
     kvstore:
       store: inmemory
-  replication_factor: 1
 
 schema_config:
   configs:
@@ -23,10 +22,6 @@ schema_config:
         period: 24h
 
 storage_config:
-  tsdb_shipper:
-    active_index_directory: /var/lib/loki/tsdb-index
-    cache_location: /var/lib/loki/tsdb-cache
-    shared_store: filesystem
   filesystem:
     directory: /var/lib/loki/chunks
 
