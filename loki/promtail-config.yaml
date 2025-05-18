@@ -21,4 +21,4 @@ scrape_configs:
           expression: '/var/lib/docker/containers/.*/(?P<filename>[^/]+)-json\.log$'
           source: __path__
       - labels:
-          filename
+          filename: filename
