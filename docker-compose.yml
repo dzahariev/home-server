@@ -134,6 +134,7 @@ services:
     volumes:
       - ./loki/loki-config.yaml:/etc/loki/loki.yaml
       - ${MONITORING_DATA_DIR}/loki:/var/lib/loki
+    command: -config.file=/etc/loki/loki.yaml
 
   promtail:
     image: grafana/promtail:3.5.0
