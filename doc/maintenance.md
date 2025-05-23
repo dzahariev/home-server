@@ -45,6 +45,19 @@ docker compose --env-file .env.server down
 docker compose --env-file .env.server up -d
 ```
 
+## Upgrade mealiedb
+```
+docker compose --env-file .env.server up -d meailedb
+docker compose --env-file .env.server exec meailedb pg_dumpall -p 5632 -U meailedb > dumpm.sql
+docker compose --env-file .env.server down
+// Manually delete old data folder
+// Manually increase version in docker-compose
+docker compose --env-file .env.server up -d meailedb
+cat dumpm.sql | docker exec -i meailedb psql -p 5632 -U meailedb
+docker compose --env-file .env.server down
+docker compose --env-file .env.server up -d
+```
+
 ## Upgrade domodb
 ```
 docker compose --env-file .env.server up -d domodb
