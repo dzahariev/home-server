@@ -8,6 +8,7 @@ Include setup of:
 - ACME-Companion (creation/renewal of Let's Encrypt certificates) 
 - Dashboard with nginx (on domain root)
 - Grafana (on grafana subdomain)
+- Dozzle (on dozzle subdomain)
 - Prometheus (not exposed, used from Grafana through internal network)
 - CAdvisor (not exposed, used from Prometheus through internal network)
 - Node-exporter (not exposed, used from Prometheus through internal network)
