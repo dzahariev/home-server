@@ -280,6 +280,59 @@ services:
     depends_on:
       - acme-companion
 
+  # Postgres DB container for Mealie
+  mealiedb:
+    image: postgres:17.5-alpine3.20
+    container_name: mealiedb
+    restart: always
+    expose:
+      - "${MEALIE_DB_PORT}" 
+    volumes:
+      - "${DATA_DIR}/mealiedb:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${MEALIE_DB_NAME}
+      POSTGRES_USER: ${MEALIE_DB_USER}
+      POSTGRES_PASSWORD: ${MEALIE_DB_PASSWORD}
+    command: ["-p", "${MEALIE_DB_PORT}"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${MEALIE_DB_USER} -p ${MEALIE_DB_PORT}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
+  # Mealie container
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v2.8.0
+    container_name: mealie
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1000M 
+    hostname:
+      mealie.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/mealie:/app/data"
+    environment:
+      DB_ENGINE: postgres
+      POSTGRES_USER: ${MEALIE_DB_USER}
+      POSTGRES_PASSWORD: ${MEALIE_DB_PASSWORD}
+      POSTGRES_SERVER: mealiedb
+      POSTGRES_PORT: ${MEALIE_DB_PORT}
+      POSTGRES_DB: ${MEALIE_DB_NAME}
+      ALLOW_SIGNUP: "false"
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      BASE_URL: https://mealie.${ROOT_HOST}
+      VIRTUAL_HOST: mealie.${ROOT_HOST}
+      LETSENCRYPT_HOST: mealie.${ROOT_HOST}
+      VIRTUAL_PORT: 9000
+    depends_on:
+      - mealiedb
+
   # FreshRSS container
   freshrss:
     image: linuxserver/freshrss:1.26.2
@@ -444,7 +497,7 @@ services:
       test: cat /proc/net/tcp6 | grep '00000000000000000000000000000000:1F90 00000000000000000000000000000000:0000' || exit 1
       interval: 5s
       timeout: 2s
-      retries: 20
+      retries: 60
       start_period: 400s
     depends_on:
       keycloakdb:
