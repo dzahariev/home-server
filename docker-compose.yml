@@ -299,7 +299,7 @@ services:
     depends_on:
       - acme-companion
   
-    # Stirling PDF container
+  # Stirling PDF container
   stirling:
     image: stirlingtools/stirling-pdf:0.46.2
     container_name: stirling
