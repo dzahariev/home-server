@@ -299,6 +299,29 @@ services:
     depends_on:
       - acme-companion
   
+  # Stirling PDF container
+  stirling:
+    image: stirlingtools/stirling-pdf:0.46.2
+    container_name: stirling
+    restart: always
+    hostname:
+      stirling.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/stirling/trainingData:/usr/share/tessdata"
+      - "${DATA_DIR}/stirling/extraConfigs:/configs"
+      - "${DATA_DIR}/stirling/customFiles:/customFiles"
+      - "${DATA_DIR}/stirling/logs:/logs"
+      - "${DATA_DIR}/stirling/pipeline:/pipeline"
+    environment:
+      DOCKER_ENABLE_SECURITY: true
+      SECURITY_ENABLELOGIN: true
+      LANGS: en_GB
+      VIRTUAL_HOST: stirling.${ROOT_HOST}
+      LETSENCRYPT_HOST: stirling.${ROOT_HOST}
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - acme-companion
+  
   # YouTrack container
   youtrack:
     image: jetbrains/youtrack:2025.1.76253
