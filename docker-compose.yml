@@ -304,7 +304,7 @@ services:
 
   # Mealie container
   mealie:
-    image: dzahariev/domo:1.8.5
+    image: ghcr.io/mealie-recipes/mealie:v2.8.0
     container_name: mealie
     restart: always
     hostname:
