@@ -307,6 +307,10 @@ services:
     image: ghcr.io/mealie-recipes/mealie:v2.8.0
     container_name: mealie
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1000M 
     hostname:
       mealie.${ROOT_HOST}
     volumes:
@@ -493,7 +497,7 @@ services:
       test: cat /proc/net/tcp6 | grep '00000000000000000000000000000000:1F90 00000000000000000000000000000000:0000' || exit 1
       interval: 5s
       timeout: 2s
-      retries: 20
+      retries: 60
       start_period: 400s
     depends_on:
       keycloakdb:
