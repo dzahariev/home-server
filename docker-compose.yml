@@ -419,7 +419,7 @@ services:
 
   # VPN wireguard container
   wireguard:
-    image: ghcr.io/wg-easy/wg-easy:14
+    image: ghcr.io/wg-easy/wg-easy:15
     container_name: wireguard
     restart: always
     hostname:
