@@ -421,21 +421,17 @@ services:
   wireguard:
     image: ghcr.io/wg-easy/wg-easy:15
     container_name: wireguard
-    restart: always
+    restart: unless-stopped
     hostname:
       vpn.${ROOT_HOST}
     volumes:
       - "${DATA_DIR}/wireguard:/etc/wireguard"
+      - "/lib/modules:/lib/modules:ro"
     ports:
-      - "51821:51821/tcp"
       - "51820:51820/udp"
+      - "51821:51821/tcp"
     environment:
-      LANG: en
-      WG_HOST: vpn.${ROOT_HOST}
-      PASSWORD_HASH: ${WIREGUARD_PASSWORD_HASH}
-      UI_TRAFFIC_STATS: true
-      UI_CHART_TYPE: 1 
-      PORT: 51821
+      INSECURE: true
       VIRTUAL_HOST: vpn.${ROOT_HOST}
       LETSENCRYPT_HOST: vpn.${ROOT_HOST}
       VIRTUAL_PORT: 51821
@@ -445,6 +441,9 @@ services:
     sysctls:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv6.conf.all.forwarding=1
+      - net.ipv6.conf.default.forwarding=1
     depends_on:
       - acme-companion
 
