@@ -427,17 +427,19 @@ services:
     volumes:
       - "${DATA_DIR}/wireguard:/etc/wireguard"
       - "/lib/modules:/lib/modules:ro"
+    networks:
+      wg:
+        ipv4_address: 10.42.42.42
+        ipv6_address: fdcc:ad94:bacf:61a3::2a
     ports:
-      - "51821:51821/tcp"
       - "51820:51820/udp"
+      - "51821:51821/tcp"
     environment:
-      INSECURE: true
       LANG: en
-      WG_HOST: vpn.${ROOT_HOST}
       PASSWORD_HASH: ${WIREGUARD_PASSWORD_HASH}
-      UI_TRAFFIC_STATS: true
-      UI_CHART_TYPE: 1 
+      HOST: vpn.${ROOT_HOST}
       PORT: 51821
+      INSECURE: true
       VIRTUAL_HOST: vpn.${ROOT_HOST}
       LETSENCRYPT_HOST: vpn.${ROOT_HOST}
       VIRTUAL_PORT: 51821
@@ -672,3 +674,13 @@ services:
     depends_on:
       - acme-companion
       - mariadb
+
+networks:
+  wg:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.42.42.0/24
+        - subnet: fdcc:ad94:bacf:61a3::/64
