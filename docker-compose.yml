@@ -431,8 +431,6 @@ services:
       - "51820:51820/udp"
       - "51821:51821/tcp"
     environment:
-      HOST: vpn.${ROOT_HOST}
-      PORT: 51821
       INSECURE: true
       VIRTUAL_HOST: vpn.${ROOT_HOST}
       LETSENCRYPT_HOST: vpn.${ROOT_HOST}
