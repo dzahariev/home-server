@@ -435,8 +435,8 @@ services:
       - "51820:51820/udp"
       - "51821:51821/tcp"
     environment:
-      LANG: en
-      PASSWORD_HASH: ${WIREGUARD_PASSWORD_HASH}
+      # LANG: en
+      # PASSWORD_HASH: ${WIREGUARD_PASSWORD_HASH}
       HOST: vpn.${ROOT_HOST}
       PORT: 51821
       INSECURE: true
