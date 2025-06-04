@@ -618,7 +618,7 @@ services:
 
   # Handbrake worker container
   handbrake-worker:
-    image: dzahariev/handbrake-worker:3.0
+    image: dzahariev/handbrake-worker:3.1
     container_name: handbrake-worker
     restart: always
     cpu_shares: 10
