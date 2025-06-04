@@ -255,6 +255,8 @@ services:
       VIRTUAL_HOST: plex.${ROOT_HOST}
       LETSENCRYPT_HOST: plex.${ROOT_HOST}
       VIRTUAL_PORT: 32400
+    devices:
+      - /dev/dri:/dev/dri
     depends_on:
       - acme-companion
 
