@@ -626,6 +626,8 @@ services:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/handbrake/input:/input"
       - "${PLEX_MEDIA_DIR}/handbrake/output:/output"
+    devices:
+      - /dev/dri:/dev/dri
 
   # DLP worker container
   dlp-worker:
