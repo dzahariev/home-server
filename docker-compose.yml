@@ -80,7 +80,7 @@ services:
 
   # BlackBox exporter container
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.26.0
+    image: prom/blackbox-exporter:v0.27.0
     container_name: blackbox-exporter
     restart: unless-stopped
     hostname: 
