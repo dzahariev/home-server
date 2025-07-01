@@ -23,6 +23,7 @@ services:
   # NginX Proxy Manager
   nginxpm:
     image: jc21/nginx-proxy-manager:2.12.4
+    container_name: nginxpm
     restart: always
     ports:
       - 80:80 
