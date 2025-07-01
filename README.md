@@ -4,8 +4,7 @@
 Make use of old PC for home server.
 
 Include setup of:
-- Nginx-Proxy (proxy)
-- ACME-Companion (creation/renewal of Let's Encrypt certificates) 
+- Nginx Proxy Manager (proxy)
 - Dashboard with nginx (on domain root)
 - Grafana (on grafana subdomain)
 - Dozzle (on dozzle subdomain)
