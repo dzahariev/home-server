@@ -128,8 +128,6 @@ services:
     environment:
       VIRTUAL_HOST: ${ROOT_HOST},www.${ROOT_HOST}
       LETSENCRYPT_HOST: ${ROOT_HOST},www.${ROOT_HOST}
-    depends_on:
-      - acme-companion
 
   # Loki container for logs
   loki:
@@ -169,8 +167,6 @@ services:
       VIRTUAL_HOST: dozzle.${ROOT_HOST}
       LETSENCRYPT_HOST: dozzle.${ROOT_HOST}
       VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
   
   # Grafana container
   grafana:
@@ -191,7 +187,6 @@ services:
     depends_on:
       - prometheus 
       - loki
-      - acme-companion
 
   # QBittorrent container
   qbittorrent:
@@ -215,8 +210,6 @@ services:
       VIRTUAL_HOST: qbittorrent.${ROOT_HOST}
       LETSENCRYPT_HOST: qbittorrent.${ROOT_HOST}
       VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
 
   # Files Browser container
   files:
@@ -238,8 +231,6 @@ services:
       VIRTUAL_HOST: files.${ROOT_HOST}
       LETSENCRYPT_HOST: files.${ROOT_HOST}
       VIRTUAL_PORT: 80
-    depends_on:
-      - acme-companion
 
   # Plex container
   plex:
@@ -263,8 +254,6 @@ services:
       VIRTUAL_PORT: 32400
     devices:
       - /dev/dri:/dev/dri
-    depends_on:
-      - acme-companion
 
   # Calibre container
   calibre:
@@ -285,8 +274,6 @@ services:
       VIRTUAL_HOST: calibre.${ROOT_HOST}
       LETSENCRYPT_HOST: calibre.${ROOT_HOST}
       VIRTUAL_PORT: 8081
-    depends_on:
-      - acme-companion
 
   # Postgres DB container for Mealie
   mealiedb:
@@ -307,8 +294,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Mealie container
   mealie:
@@ -357,8 +342,6 @@ services:
       VIRTUAL_HOST: freshrss.${ROOT_HOST}
       LETSENCRYPT_HOST: freshrss.${ROOT_HOST}
       VIRTUAL_PORT: 80
-    depends_on:
-      - acme-companion
   
   # Stirling PDF container
   stirling:
@@ -380,8 +363,6 @@ services:
       VIRTUAL_HOST: stirling.${ROOT_HOST}
       LETSENCRYPT_HOST: stirling.${ROOT_HOST}
       VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
   
   # YouTrack container
   youtrack:
@@ -399,8 +380,6 @@ services:
       VIRTUAL_HOST: youtrack.${ROOT_HOST}
       LETSENCRYPT_HOST: youtrack.${ROOT_HOST}
       VIRTUAL_PORT: 8080
-    depends_on:
-      - acme-companion
 
   # PiHole container
   pihole:
@@ -422,8 +401,6 @@ services:
       VIRTUAL_HOST: pihole.${ROOT_HOST}
       LETSENCRYPT_HOST: pihole.${ROOT_HOST}
       VIRTUAL_PORT: 80
-    depends_on:
-      - acme-companion
 
   # VPN wireguard container
   wireguard:
@@ -452,8 +429,6 @@ services:
       - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv6.conf.all.forwarding=1
       - net.ipv6.conf.default.forwarding=1
-    depends_on:
-      - acme-companion
 
   # Postgres DB container for Keycloak
   keycloakdb:
@@ -473,8 +448,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Keycloak container
   keycloak:
@@ -674,5 +647,4 @@ services:
       VIRTUAL_HOST: georgi.${ROOT_HOST}
       LETSENCRYPT_HOST: georgi.${ROOT_HOST}
     depends_on:
-      - acme-companion
       - mariadb
