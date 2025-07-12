@@ -127,7 +127,7 @@ services:
 
   # Loki container for logs
   loki:
-    image: grafana/loki:3.5.1
+    image: grafana/loki:3.5.2
     container_name: loki
     restart: always
     expose:
