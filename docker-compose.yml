@@ -139,7 +139,7 @@ services:
 
   # Promtail container for logs aggregation
   promtail:
-    image: grafana/promtail:3.5.1
+    image: grafana/promtail:3.5.2
     container_name: promtail
     restart: always
     volumes:
