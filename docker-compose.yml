@@ -214,7 +214,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.37.0
+    image: filebrowser/filebrowser:v2.38.0
     container_name: files
     restart: always
     hostname:
