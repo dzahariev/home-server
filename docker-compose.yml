@@ -356,7 +356,7 @@ services:
   
   # Stirling PDF container
   stirling:
-    image: stirlingtools/stirling-pdf:0.46.2
+    image: stirlingtools/stirling-pdf:1.0.2
     container_name: stirling
     restart: always
     hostname:
