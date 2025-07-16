@@ -654,7 +654,7 @@ services:
 
   # Wordpress container
   wordpress:
-    image: wordpress:6.8.1
+    image: wordpress:6.8.2
     container_name: wordpress
     restart: always
     volumes:
