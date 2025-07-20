@@ -569,7 +569,7 @@ services:
 
   # Domo container
   domo:
-    image: dzahariev/domo:1.8.5
+    image: dzahariev/domo:1.8.6
     container_name: domo
     restart: always
     hostname:
