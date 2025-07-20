@@ -595,7 +595,7 @@ services:
 
   # TaskBoard container
   taskboard:
-    image: dzahariev/taskboard:1.24
+    image: dzahariev/taskboard:1.25
     container_name: taskboard
     restart: always
     hostname:
