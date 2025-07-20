@@ -552,7 +552,7 @@ services:
 
   # DB migrations for Domo
   domo-migrations:
-    image: dzahariev/domo-migrations:1.8.5
+    image: dzahariev/domo-migrations:1.8.6
     container_name: domo-migrations
     restart: on-failure
     environment:
