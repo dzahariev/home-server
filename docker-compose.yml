@@ -293,9 +293,6 @@ services:
       - "${DATA_DIR}/immich/model-cache:/cache"
     environment:
       TZ: Europe/Sofia
-      DB_DATABASE_NAME: ${IMMICH_DB_NAME}
-      DB_USERNAME: ${IMMICH_DB_USER}
-      DB_PASSWORD: ${IMMICH_DB_PASSWORD}
     depends_on:
       - immich-db
 
@@ -313,7 +310,7 @@ services:
     container_name: immich_server
     restart: always
     volumes:
-      - "${PLEX_MEDIA_DIR}/Photos:/data"
+      - "${PLEX_MEDIA_DIR}/immich:/data"
       - /etc/localtime:/etc/localtime:ro
     environment:
       TZ: Europe/Sofia
