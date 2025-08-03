@@ -297,7 +297,7 @@ services:
       DB_USERNAME: ${IMMICH_DB_USER}
       DB_PASSWORD: ${IMMICH_DB_PASSWORD}
     depends_on:
-      - immich_postgres
+      - immich-db
 
   immich-redis:
     container_name: immich_redis
