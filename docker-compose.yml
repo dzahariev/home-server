@@ -264,10 +264,10 @@ services:
   immich-db:
     image: ghcr.io/immich-app/postgres:17-vectorchord0.4.3-pgvectors0.3.0
     container_name: immich_postgres
+    hostname: 
+      database
     restart: always
     shm_size: 128mb
-    ports:
-      - 5432:5432
     expose:
       - "5432" 
     volumes:
