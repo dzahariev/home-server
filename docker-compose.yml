@@ -301,6 +301,8 @@ services:
 
   immich-redis:
     container_name: immich_redis
+    hostname: 
+      redis
     restart: always
     image: valkey/valkey:8.1.3-alpine3.22
     healthcheck:
