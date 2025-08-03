@@ -19,6 +19,7 @@ Include setup of:
 - File Browser (on files subdomain)
 - YouTrack (on youtrack subdomain)
 - Plex (on plex subdomain)
+- Immich (on immich subdomain)
 - Mealie (on mealie subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
