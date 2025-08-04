@@ -312,6 +312,8 @@ services:
     volumes:
       - "${PLEX_MEDIA_DIR}/immich:/data"
       - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/dri:/dev/dri
     environment:
       TZ: Europe/Sofia
       DB_DATABASE_NAME: ${IMMICH_DB_NAME}
