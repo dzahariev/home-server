@@ -642,34 +642,16 @@ services:
       - "${PLEX_MEDIA_DIR}/tasks:/tasks"
       - "${PLEX_MEDIA_DIR}/downloads:/output"
 
-  # MariaDB container
-  mariadb:
-    image: mariadb:11.8.2
-    container_name: mariadb
+  # georgi container
+  georgi:
+    image: georgizahariev/portfolio:0.0.3
+    container_name: georgi
     restart: always
-    volumes:
-      - "${DATA_DIR}/mariadb:/var/lib/mysql"
-    environment: 
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-
-  # Wordpress container
-  wordpress:
-    image: wordpress:6.8.2
-    container_name: wordpress
-    restart: always
-    volumes:
-      - "${DATA_DIR}/wordpress:/var/www/html/"
+    hostname:
+      georgi.${ROOT_HOST}
     environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_USER: ${MARIADB_USER}
-      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
-      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
-      WORDPRESS_TABLE_PREFIX: "wp_"
       VIRTUAL_HOST: georgi.${ROOT_HOST}
       LETSENCRYPT_HOST: georgi.${ROOT_HOST}
+      VIRTUAL_PORT: 3000
     depends_on:
       - acme-companion
-      - mariadb
