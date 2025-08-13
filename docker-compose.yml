@@ -160,7 +160,6 @@ services:
       VIRTUAL_PORT: 3000
     depends_on:
       - prometheus 
-      - loki
       - acme-companion
 
   # QBittorrent container
