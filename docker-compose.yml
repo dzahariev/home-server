@@ -125,30 +125,6 @@ services:
     depends_on:
       - acme-companion
 
-  # Loki container for logs
-  loki:
-    image: grafana/loki:3.5.3
-    container_name: loki
-    restart: always
-    expose:
-      - "3100"
-    volumes:
-      - ./loki/loki-config.yaml:/etc/loki/loki-config.yaml
-      - ${MONITORING_DATA_DIR}/loki:/var/lib/loki
-    command: -config.file=/etc/loki/loki-config.yaml
-
-  # Promtail container for logs aggregation
-  promtail:
-    image: grafana/promtail:3.5.3
-    container_name: promtail
-    restart: always
-    volumes:
-      - ./loki/promtail-config.yaml:/etc/promtail/promtail-config.yaml
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-    command: -config.file=/etc/promtail/promtail-config.yaml
-    depends_on:
-      - loki
-
   # Dozzle container
   dozzle:
     image: amir20/dozzle:v8.13.8
@@ -184,7 +160,6 @@ services:
       VIRTUAL_PORT: 3000
     depends_on:
       - prometheus 
-      - loki
       - acme-companion
 
   # QBittorrent container
