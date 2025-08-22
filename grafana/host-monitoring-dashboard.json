@@ -88,7 +88,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
+        "w": 3,
         "x": 0,
         "y": 1
       },
@@ -178,8 +178,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 6,
+        "w": 3,
+        "x": 3,
         "y": 1
       },
       "id": 58,
@@ -270,8 +270,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 12,
+        "w": 3,
+        "x": 6,
         "y": 1
       },
       "id": 44,
@@ -353,8 +353,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 18,
+        "w": 3,
+        "x": 9,
         "y": 1
       },
       "id": 54,
@@ -419,344 +419,6 @@
         "type": "prometheus",
         "uid": "WTP-C6f7z"
       },
-      "description": "Total number of CPU cores",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 6
-      },
-      "id": 68,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "WTP-C6f7z"
-          },
-          "editorMode": "code",
-          "expr": "count(count(node_cpu_seconds_total) by (cpu))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "CPU Cores",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "WTP-C6f7z"
-      },
-      "description": "Total containers running",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 6,
-        "y": 6
-      },
-      "id": 70,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "WTP-C6f7z"
-          },
-          "editorMode": "code",
-          "expr": "count(container_last_seen{image=~ \"(.)+\"})",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Containers",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "WTP-C6f7z"
-      },
-      "description": "System uptime",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 1,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 12,
-        "y": 6
-      },
-      "id": 89,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "WTP-C6f7z"
-          },
-          "editorMode": "code",
-          "expr": "node_time_seconds - node_boot_time_seconds",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Uptime",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "WTP-C6f7z"
-      },
-      "description": "Total RAM",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 18,
-        "y": 6
-      },
-      "id": 74,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "WTP-C6f7z"
-          },
-          "editorMode": "code",
-          "expr": "node_memory_MemTotal_bytes",
-          "legendFormat": "Capacity",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "WTP-C6f7z"
-          },
-          "editorMode": "code",
-          "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
-          "hide": false,
-          "legendFormat": "Used",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "RAM",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "WTP-C6f7z"
-      },
       "description": "Used Root FS",
       "fieldConfig": {
         "defaults": {
@@ -799,9 +461,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 0,
-        "y": 9
+        "w": 3,
+        "x": 12,
+        "y": 1
       },
       "id": 26,
       "maxDataPoints": 100,
@@ -891,9 +553,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 6,
-        "y": 9
+        "w": 3,
+        "x": 15,
+        "y": 1
       },
       "id": 56,
       "options": {
@@ -980,9 +642,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 12,
-        "y": 9
+        "w": 3,
+        "x": 18,
+        "y": 1
       },
       "id": 90,
       "options": {
@@ -1069,9 +731,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 6,
-        "x": 18,
-        "y": 9
+        "w": 3,
+        "x": 21,
+        "y": 1
       },
       "id": 97,
       "options": {
@@ -1110,6 +772,344 @@
       ],
       "title": "External",
       "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "WTP-C6f7z"
+      },
+      "description": "Total number of CPU cores",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 6
+      },
+      "id": 68,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "WTP-C6f7z"
+          },
+          "editorMode": "code",
+          "expr": "count(count(node_cpu_seconds_total) by (cpu))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Cores",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "WTP-C6f7z"
+      },
+      "description": "Total containers running",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 6
+      },
+      "id": 70,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "WTP-C6f7z"
+          },
+          "editorMode": "code",
+          "expr": "count(container_last_seen{image=~ \"(.)+\"})",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Containers",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "WTP-C6f7z"
+      },
+      "description": "System uptime",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 6,
+        "y": 6
+      },
+      "id": 89,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "WTP-C6f7z"
+          },
+          "editorMode": "code",
+          "expr": "node_time_seconds - node_boot_time_seconds",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "WTP-C6f7z"
+      },
+      "description": "Total RAM",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 9,
+        "y": 6
+      },
+      "id": 74,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "WTP-C6f7z"
+          },
+          "editorMode": "code",
+          "expr": "node_memory_MemTotal_bytes",
+          "legendFormat": "Capacity",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "WTP-C6f7z"
+          },
+          "editorMode": "code",
+          "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
+          "hide": false,
+          "legendFormat": "Used",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "RAM",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -1157,9 +1157,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 14
+        "w": 3,
+        "x": 12,
+        "y": 6
       },
       "id": 92,
       "maxDataPoints": 100,
@@ -1251,9 +1251,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 6,
-        "y": 14
+        "w": 3,
+        "x": 15,
+        "y": 6
       },
       "id": 93,
       "maxDataPoints": 100,
@@ -1345,9 +1345,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 12,
-        "y": 14
+        "w": 3,
+        "x": 18,
+        "y": 6
       },
       "id": 94,
       "maxDataPoints": 100,
@@ -1439,9 +1439,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 18,
-        "y": 14
+        "w": 3,
+        "x": 21,
+        "y": 6
       },
       "id": 98,
       "maxDataPoints": 100,
@@ -1497,7 +1497,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 9
       },
       "id": 78,
       "panels": [],
@@ -1585,7 +1585,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 10
       },
       "id": 5,
       "options": {
@@ -1715,7 +1715,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 10
       },
       "id": 45,
       "maxDataPoints": 100,
@@ -1823,7 +1823,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 16
       },
       "id": 13,
       "options": {
@@ -1923,7 +1923,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 16
       },
       "id": 95,
       "options": {
@@ -2023,7 +2023,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 31
+        "y": 23
       },
       "id": 96,
       "options": {
@@ -2123,7 +2123,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 31
+        "y": 23
       },
       "id": 99,
       "options": {
@@ -2542,7 +2542,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 38
+        "y": 30
       },
       "id": 60,
       "options": {
@@ -2707,7 +2707,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 38
+        "y": 30
       },
       "id": 20,
       "options": {
@@ -2819,7 +2819,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 38
+        "y": 30
       },
       "id": 19,
       "options": {
@@ -2881,7 +2881,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 37
       },
       "id": 80,
       "panels": [],
@@ -2953,7 +2953,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 38
       },
       "id": 84,
       "options": {
@@ -3057,7 +3057,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 45
       },
       "id": 38,
       "options": {
@@ -3175,7 +3175,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 45
       },
       "id": 10,
       "options": {
@@ -3293,7 +3293,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 61
+        "y": 53
       },
       "id": 82,
       "options": {
@@ -3396,7 +3396,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 61
+        "y": 53
       },
       "id": 86,
       "options": {
@@ -3501,7 +3501,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 69
+        "y": 61
       },
       "id": 49,
       "options": {
@@ -3605,7 +3605,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 69
+        "y": 61
       },
       "id": 50,
       "options": {
@@ -3787,7 +3787,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 75
+        "y": 67
       },
       "id": 42,
       "options": {
@@ -3950,7 +3950,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 75
+        "y": 67
       },
       "id": 88,
       "options": {
@@ -4056,5 +4056,5 @@
   "timezone": "browser",
   "title": "Host & Docker Monitoring",
   "uid": "VKtkKcAVz",
-  "version": 39
+  "version": 40
 }
