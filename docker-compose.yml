@@ -237,7 +237,7 @@ services:
 
   # Calibre container
   calibre:
-    image: linuxserver/calibre:8.8.0
+    image: linuxserver/calibre:8.9.0
     container_name: calibre
     restart: always
     hostname:
