@@ -281,7 +281,7 @@ services:
 
   # Mealie container
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:v3.2.0
+    image: ghcr.io/mealie-recipes/mealie:v3.2.1
     container_name: mealie
     restart: always
     deploy:
