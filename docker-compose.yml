@@ -484,7 +484,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:3.6
+    image: dzahariev/invval:3.7
     container_name: invval
     restart: always
     hostname:
