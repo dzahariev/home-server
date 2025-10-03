@@ -127,7 +127,7 @@ services:
 
   # Dozzle container
   dozzle:
-    image: amir20/dozzle:v8.14.3
+    image: amir20/dozzle:v8.14.4
     container_name: dozzle
     restart: always
     volumes:
