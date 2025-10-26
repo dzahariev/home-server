@@ -378,7 +378,7 @@ services:
     expose:
       - "27017" 
     volumes:
-      - "${DATA_DIR}/rocketdb::/bitnami/mongodb:rw"
+      - "${DATA_DIR}/rocketdb:/bitnami/mongodb:rw"
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${ROCKET_DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROCKET_DB_PASSWORD}
