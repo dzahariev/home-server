@@ -386,7 +386,7 @@ services:
       - acme-companion
 
   rocket:
-    image: rocket.chat:7.9.3
+    image: rocket.chat:7.10.0
     restart: always
     container_name: rocket
     environment:
