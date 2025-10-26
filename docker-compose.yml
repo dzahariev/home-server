@@ -371,6 +371,44 @@ services:
     depends_on:
       - acme-companion
 
+  rocketdb:
+    image: mongo:8.0.15
+    restart: always
+    container_name: rocketdb
+    expose:
+      - "27017" 
+    volumes:
+      - "${DATA_DIR}/rocketdb::/bitnami/mongodb:rw"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${ROCKET_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROCKET_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD", "mongo", "--username", "$${ROCKET_DB_USER}", "--password", "$${ROCKET_DB_PASSWORD}", "--eval", "db.adminCommand('ping').ok", "--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    depends_on:
+      - acme-companion
+
+  rocket:
+    image: rocket.chat:7.9.3
+    restart: always
+    container_name: rocket
+    environment:
+      ROOT_URL: https://rocket.${ROOT_HOST}
+      PORT: "3000"
+      DEPLOY_METHOD: docker
+      DEPLOY_PLATFORM: compose
+      LICENSE_DEBUG: true
+      MONGO_URL: mongodb://${ROCKET_DB_USER}:${ROCKET_DB_PASSWORD}@rocketdb:27017/rocketchat
+      VIRTUAL_HOST: rocket.${ROOT_HOST}
+      LETSENCRYPT_HOST: rocket.${ROOT_HOST}
+      VIRTUAL_PORT: 3000
+    depends_on:
+      rocketdb:
+        condition: service_healthy
+
   # PiHole container
   pihole:
     image: pihole/pihole:2025.10.0
