@@ -382,12 +382,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${ROCKET_DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROCKET_DB_PASSWORD}
-    healthcheck:
-      test: ["CMD-SHELL", "if command -v mongosh >/dev/null 2>&1; then mongosh --username \"$MONGO_INITDB_ROOT_USERNAME\" --password \"$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'db.adminCommand(\"ping\").ok' --quiet; else mongo --username \"$MONGO_INITDB_ROOT_USERNAME\" --password \"$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'db.adminCommand(\"ping\").ok' --quiet; fi || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
     depends_on:
       - acme-companion
 
@@ -406,8 +400,7 @@ services:
       LETSENCRYPT_HOST: rocket.${ROOT_HOST}
       VIRTUAL_PORT: 3000
     depends_on:
-      rocketdb:
-        condition: service_healthy
+      - rocketdb
 
   # PiHole container
   pihole:
