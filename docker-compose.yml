@@ -383,7 +383,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${ROCKET_DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROCKET_DB_PASSWORD}
     healthcheck:
-      test: ["CMD", "mongo", "--username", "$${ROCKET_DB_USER}", "--password", "$${ROCKET_DB_PASSWORD}", "--eval", "db.adminCommand('ping').ok", "--quiet"]
+      test: ["CMD-SHELL", "if command -v mongosh >/dev/null 2>&1; then mongosh --username \"$MONGO_INITDB_ROOT_USERNAME\" --password \"$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'db.adminCommand(\"ping\").ok' --quiet; else mongo --username \"$MONGO_INITDB_ROOT_USERNAME\" --password \"$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'db.adminCommand(\"ping\").ok' --quiet; fi || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
