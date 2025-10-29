@@ -372,7 +372,7 @@ services:
       - acme-companion
 
   rocketdb:
-    image: mongo:8.0.15
+    image: mongo:8.2.1
     restart: always
     container_name: rocketdb
     expose:
