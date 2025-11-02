@@ -352,6 +352,21 @@ services:
     depends_on:
       - acme-companion
   
+  convertx:
+    image: c4illin/convertx
+    container_name: convertx
+    restart: always
+    hostname:
+      convertx.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/convertx:/app/data"
+    environment:
+      VIRTUAL_HOST: convertx.${ROOT_HOST}
+      LETSENCRYPT_HOST: convertx.${ROOT_HOST}
+      VIRTUAL_PORT: 3000
+    depends_on:
+      - acme-companion
+
   # YouTrack container
   youtrack:
     image: jetbrains/youtrack:2025.3.104432

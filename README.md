@@ -22,6 +22,7 @@ Include setup of:
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
 - Stirling-PDF (on stirling subdomain)
+- ConvertX (on convertx subdomain)
 - PiHole (on pihole subdomain)
 - WireGuard (on vpn subdomain)
 - PostgeSQL (not exposed, used through internal network)
