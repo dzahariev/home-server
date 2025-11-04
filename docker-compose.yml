@@ -354,7 +354,7 @@ services:
   
   # Changedetection container
   changedetection:
-    image: linuxserver/freshrss:1.27.1
+    image: dgtlmoon/changedetection.io:0.50.38
     container_name: changedetection
     restart: always
     hostname:
