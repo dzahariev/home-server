@@ -352,6 +352,25 @@ services:
     depends_on:
       - acme-companion
   
+  # Changedetection container
+  changedetection:
+    image: linuxserver/freshrss:1.27.1
+    container_name: changedetection
+    restart: always
+    hostname:
+      changedetection.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/changedetection:/datastore"
+    environment:
+      BASE_URL: https://changedetection.${ROOT_HOST}
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: changedetection.${ROOT_HOST}
+      LETSENCRYPT_HOST: changedetection.${ROOT_HOST}
+      VIRTUAL_PORT: 5000
+    depends_on:
+      - acme-companion
+
+  # ConvertX container
   convertx:
     image: c4illin/convertx
     container_name: convertx

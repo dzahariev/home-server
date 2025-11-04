@@ -16,15 +16,34 @@ echo "Check if DockerHub can be reached ..."
 if ! dockerHubIsUp ; then
 	echo "DockerHub canot be reached, will not update images."
 else
+	echo "Backup of compose file ..."
+ 	cp /home/ubuntu/home-server/docker-compose.yml /home/ubuntu/home-server/docker-compose.yml.old
+ 	echo "Old compose file is saved!"
+
+	echo "Gets update from GitHub ..."
+	cd /home/ubuntu/home-server
+	git pull
+	echo "Updates arefetched from GitHub!"
+
+	echo "Pull new containers ..."
+ 	cd /home/ubuntu/home-server
+ 	docker compose --env-file .env.server pull
+ 	echo "Containers are pulled!"
+
+	echo "Prepare compose file for stopping ..."
+ 	mv /home/ubuntu/home-server/docker-compose.yml /home/ubuntu/home-server/docker-compose.yml.new
+ 	mv /home/ubuntu/home-server/docker-compose.yml.old /home/ubuntu/home-server/docker-compose.yml
+ 	echo "Old compose file is restored!"
+
 	echo "Stops the containers ..."
  	cd /home/ubuntu/home-server
  	docker compose --env-file .env.server down --remove-orphans
  	echo "Containers are stopped!"
 	
-	echo "Gets update from GitHub ..."
-	cd /home/ubuntu/home-server
-	git pull
-	echo "Updates arefetched from GitHub!"
+	echo "Prepare compose file for starting ..."
+ 	rm /home/ubuntu/home-server/docker-compose.yml
+ 	mv /home/ubuntu/home-server/docker-compose.yml.new /home/ubuntu/home-server/docker-compose.yml
+ 	echo "New compose file is restored!"
 
 	echo "Starts the containers ..."
 	cd /home/ubuntu/home-server
