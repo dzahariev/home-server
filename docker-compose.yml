@@ -405,37 +405,6 @@ services:
     depends_on:
       - acme-companion
 
-  rocketdb:
-    image: mongo:8.2.1
-    restart: always
-    container_name: rocketdb
-    expose:
-      - "27017" 
-    volumes:
-      - "${DATA_DIR}/rocketdb:/data/db"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${ROCKET_DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${ROCKET_DB_PASSWORD}
-    depends_on:
-      - acme-companion
-
-  rocket:
-    image: rocket.chat:7.12.0
-    restart: always
-    container_name: rocket
-    environment:
-      ROOT_URL: https://rocket.${ROOT_HOST}
-      PORT: "3000"
-      DEPLOY_METHOD: docker
-      DEPLOY_PLATFORM: compose
-      LICENSE_DEBUG: true
-      MONGO_URL: mongodb://${ROCKET_DB_USER}:${ROCKET_DB_PASSWORD}@rocketdb:27017/rocketchat?authSource=admin
-      VIRTUAL_HOST: rocket.${ROOT_HOST}
-      LETSENCRYPT_HOST: rocket.${ROOT_HOST}
-      VIRTUAL_PORT: 3000
-    depends_on:
-      - rocketdb
-
   # PiHole container
   pihole:
     image: pihole/pihole:2025.10.3

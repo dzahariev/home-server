@@ -18,7 +18,6 @@ Include setup of:
 - YouTrack (on youtrack subdomain)
 - Plex (on plex subdomain)
 - Mealie (on mealie subdomain)
-- Rocket Chat (on rocket subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
 - Stirling-PDF (on stirling subdomain)
