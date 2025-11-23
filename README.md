@@ -27,6 +27,7 @@ Include setup of:
 - WireGuard (on vpn subdomain)
 - PostgeSQL (not exposed, used through internal network)
 - Keycloak (on auth subdomain)
+- Nginx Proxy Manager (on lab subdomain)
 ## Prepare
 Adjust the .env file content by setting the base folder, domain, and secrets, or create a new file named .env.server and use it instead.
 

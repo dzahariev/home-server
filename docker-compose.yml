@@ -664,3 +664,51 @@ services:
       VIRTUAL_PORT: 3000
     depends_on:
       - acme-companion
+
+  # Postgres DB container for NginX Proxy Manager
+  nginxpmdb:
+    image: postgres:17.5-alpine3.20
+    container_name: nginxpmdb
+    restart: always
+    expose:
+      - "${NGXPM_DB_PORT}" 
+    volumes:
+      - "${DATA_DIR}/nginxpmdb:/var/lib/postgresql"
+    environment: 
+      POSTGRES_DB: ${NGXPM_DB_NAME}
+      POSTGRES_USER: ${NGXPM_DB_USER}
+      POSTGRES_PASSWORD: ${NGXPM_DB_PASSWORD}
+    command: ["-p", "${NGXPM_DB_PORT}"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${NGXPM_DB_USER} -p ${NGXPM_DB_PORT}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
+
+  # NginX Proxy Manager
+  nginxpm:
+    image: jc21/nginx-proxy-manager:2.13.5
+    container_name: nginxpm
+    restart: always
+    hostname:
+      lab.${ROOT_HOST}
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      DB_POSTGRES_HOST: nginxpmdb
+      DB_POSTGRES_PORT: ${NGXPM_DB_PORT}
+      DB_POSTGRES_NAME: ${NGXPM_DB_NAME}
+      DB_POSTGRES_USER: ${NGXPM_DB_USER}
+      DB_POSTGRES_PASSWORD: ${NGXPM_DB_PASSWORD}
+      VIRTUAL_HOST: lab.${ROOT_HOST}
+      LETSENCRYPT_HOST: lab.${ROOT_HOST}
+      VIRTUAL_PORT: 81
+    volumes:
+      - ${DATA_DIR}/nginxpm/data:/data
+      - ${DATA_DIR}/nginxpm/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - nginxpmdb
