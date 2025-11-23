@@ -695,9 +695,9 @@ services:
     restart: always
     hostname:
       lab.${ROOT_HOST}
-    ports:
-      - 80:80
-      - 443:443
+    # ports:
+    #   - 80:80
+    #   - 443:443
     environment:
       DB_POSTGRES_HOST: nginxpmdb
       DB_POSTGRES_PORT: ${NGXPM_DB_PORT}
