@@ -388,7 +388,7 @@ services:
 
   # YouTrack container
   youtrack:
-    image: jetbrains/youtrack:2025.3.110568
+    image: jetbrains/youtrack:2025.3.112453
     container_name: youtrack
     restart: always
     hostname:
