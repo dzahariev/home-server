@@ -4,28 +4,44 @@
             "name": "handbrake",
             "presets": [
                 {
-                    "name": "480P",
-                    "key": "Custom480P"
+                    "name": "MP4-264-480P",
+                    "key": "mp40480p264"
                 },
                 {
-                    "name": "576P",
-                    "key": "Custom576P"
+                    "name": "MP4-264-576P",
+                    "key": "mp40576p264"
                 },
                 {
-                    "name": "720P",
-                    "key": "Custom720P"
+                    "name": "MP4-264-720P",
+                    "key": "mp40720p264"
                 },
                 {
-                    "name": "*480P",
-                    "key": "Custom265X480P"
+                    "name": "MP4-265-480P",
+                    "key": "mp40480p265"
                 },
                 {
-                    "name": "*576P",
-                    "key": "Custom265X576P"
+                    "name": "MP4-265-576P",
+                    "key": "mp40576p265"
                 },
                 {
-                    "name": "*720P",
-                    "key": "Custom265X720P"
+                    "name": "MP4-265-720P",
+                    "key": "mp40720p265"
+                },
+                {
+                    "name": "MKV-265-480P",
+                    "key": "mkv0480p265"
+                },
+                {
+                    "name": "MKV-265-576P",
+                    "key": "mkv0576p265"
+                },
+                {
+                    "name": "MKV-265-720P",
+                    "key": "mkv0720p265"
+                },
+                {
+                    "name": "MKV-265-1080P",
+                    "key": "mkv1080p265"
                 }
             ]
         },
