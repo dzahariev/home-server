@@ -4,30 +4,6 @@
             "name": "handbrake",
             "presets": [
                 {
-                    "name": "MP4-264-480P",
-                    "key": "mp40480p264"
-                },
-                {
-                    "name": "MP4-264-576P",
-                    "key": "mp40576p264"
-                },
-                {
-                    "name": "MP4-264-720P",
-                    "key": "mp40720p264"
-                },
-                {
-                    "name": "MP4-265-480P",
-                    "key": "mp40480p265"
-                },
-                {
-                    "name": "MP4-265-576P",
-                    "key": "mp40576p265"
-                },
-                {
-                    "name": "MP4-265-720P",
-                    "key": "mp40720p265"
-                },
-                {
                     "name": "MKV-265-480P",
                     "key": "mkv0480p265"
                 },
