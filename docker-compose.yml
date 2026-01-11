@@ -663,3 +663,54 @@ services:
       VIRTUAL_PORT: 3000
     depends_on:
       - acme-companion
+
+  # Postgres DB container for Mattermost
+  mattermostdb:
+    image: postgres:17.5-alpine3.20
+    container_name: mattermostdb
+    restart: always
+    expose:
+      - "${MMOST_DB_PORT}" 
+    volumes:
+      - "${DATA_DIR}/mattermostdb:/var/lib/postgresql/data"
+    environment: 
+      POSTGRES_DB: ${MMOST_DB_NAME}
+      POSTGRES_USER: ${MMOST_DB_USER}
+      POSTGRES_PASSWORD: ${MMOST_DB_PASSWORD}
+    command: ["-p", "${MMOST_DB_PORT}"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${MMOST_DB_USER} -p ${MMOST_DB_PORT}"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    depends_on:
+      - acme-companion
+
+  mattermost:
+    image: mattermost/mattermost-team-edition:release-11.3
+    container_name: mattermost
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 200
+    read_only: false
+    tmpfs:
+      - /tmp
+    volumes:
+      - ${DATA_DIR}/mattermost/config:/mattermost/config:rw
+      - ${DATA_DIR}/mattermost/data:/mattermost/data:rw
+      - ${DATA_DIR}/mattermost/logs:/mattermost/logs:rw
+      - ${DATA_DIR}/mattermost/plugins:/mattermost/plugins:rw
+      - ${DATA_DIR}/mattermost/client/plugins:/mattermost/client/plugins:rw
+      - ${DATA_DIR}/mattermost/bleve-indexes:/mattermost/bleve-indexes:rw
+    environment:
+      TZ: Europe/Sofia
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://${MMOST_DB_USER}:${MMOST_DB_PASSWORD}@mattermostdb:${MMOST_DB_PORT}/${MMOST_DB_NAME}?sslmode=disable&connect_timeout=10
+      MM_BLEVESETTINGS_INDEXDIR: /mattermost/bleve-indexes
+      MM_SERVICESETTINGS_SITEURL: https://mattermost.${ROOT_HOST}
+      VIRTUAL_HOST: mattermost.${ROOT_HOST}
+      LETSENCRYPT_HOST: mattermost.${ROOT_HOST}
+      VIRTUAL_PORT: 8065
+    depends_on:
+      - mattermostdb
