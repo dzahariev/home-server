@@ -16,6 +16,7 @@ Include setup of:
 - QBitTorrent (on qbittorrent subdomain)
 - File Browser (on files subdomain)
 - YouTrack (on youtrack subdomain)
+- MatterMost (on mattermost subdomain)
 - Plex (on plex subdomain)
 - Mealie (on mealie subdomain)
 - Calibre (on calibre subdomain)
