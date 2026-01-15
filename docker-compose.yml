@@ -481,7 +481,7 @@ services:
 
   # Keycloak container
   keycloak:
-    image: keycloak/keycloak:26.5.0
+    image: keycloak/keycloak:26.5.1
     container_name: keycloak
     restart: always
     links:
