@@ -353,7 +353,7 @@ services:
   
   # Changedetection container
   changedetection:
-    image: dgtlmoon/changedetection.io:0.52.7
+    image: dgtlmoon/changedetection.io:0.52.8
     container_name: changedetection
     restart: always
     hostname:
