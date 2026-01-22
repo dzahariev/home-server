@@ -652,7 +652,7 @@ services:
 
   # georgi container
   georgi:
-    image: georgizahariev/portfolio:0.0.4
+    image: georgizahariev/portfolio:0.0.5
     container_name: georgi
     restart: always
     hostname:
@@ -660,7 +660,7 @@ services:
     environment:
       VIRTUAL_HOST: georgi.${ROOT_HOST}
       LETSENCRYPT_HOST: georgi.${ROOT_HOST}
-      VIRTUAL_PORT: 3000
+      VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
 
