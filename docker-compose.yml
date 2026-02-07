@@ -517,7 +517,7 @@ services:
 
   # InvVal container
   invval:
-    image: dzahariev/invval:4.0
+    image: dzahariev/invval:4.1
     container_name: invval
     restart: always
     hostname:
@@ -629,7 +629,7 @@ services:
 
   # Handbrake worker container
   handbrake-worker:
-    image: dzahariev/handbrake-worker:3.5
+    image: dzahariev/handbrake-worker:3.6
     container_name: handbrake-worker
     restart: always
     cpu_shares: 10
