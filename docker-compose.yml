@@ -406,7 +406,7 @@ services:
 
   # PiHole container
   pihole:
-    image: pihole/pihole:2025.11.1
+    image: pihole/pihole:2026.02.0
     container_name: pihole
     restart: always
     hostname:
