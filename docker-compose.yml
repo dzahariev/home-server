@@ -189,7 +189,7 @@ services:
 
   # Files Browser container
   files:
-    image: filebrowser/filebrowser:v2.60.0
+    image: filebrowser/filebrowser:v2.61.0
     container_name: files
     restart: always
     hostname:
