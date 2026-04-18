@@ -125,23 +125,30 @@ services:
     depends_on:
       - acme-companion
 
-  # Dozzle container
-  dozzle:
-    image: amir20/dozzle:v10.4.1
-    container_name: dozzle
+  loki:
+    image: grafana/loki:3.5.0
+    container_name: loki
+    restart: always
+    expose:
+      - "3100"
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/loki-config.yaml
+      - ${MONITORING_DATA_DIR}/loki:/var/lib/loki
+    command: -config.file=/etc/loki/loki-config.yaml
+
+  promtail:
+    image: grafana/promtail:3.5.0
+    container_name: promtail
     restart: always
     volumes:
+      - ./loki/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - "${DATA_DIR}/dozzle:/data"
-    environment:
-      DOZZLE_AUTH_PROVIDER: simple
-      DOZZLE_AUTH_TTL: 48h
-      VIRTUAL_HOST: dozzle.${ROOT_HOST}
-      LETSENCRYPT_HOST: dozzle.${ROOT_HOST}
-      VIRTUAL_PORT: 8080
+    command: -config.file=/etc/promtail/promtail-config.yaml
     depends_on:
-      - acme-companion
-  
+      - loki
+
+
   # Grafana container
   grafana:
     image: grafana/grafana:13.0.1
