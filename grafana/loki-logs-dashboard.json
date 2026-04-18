@@ -25,7 +25,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "description": "Total  Count of log lines in the specified time range",
       "fieldConfig": {
@@ -92,7 +92,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "direction": "backward",
           "editorMode": "code",
@@ -108,7 +108,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "description": "Total Count: of $searchable_pattern in the specified time range",
       "fieldConfig": {
@@ -175,7 +175,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
           "hide": false,
@@ -188,7 +188,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "description": "Live logs is a like 'tail -f' in a real time",
       "fieldConfig": {
@@ -218,7 +218,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "{container=\"$container\"} |~ \"(?i)$searchable_pattern\" ",
           "hide": false,
@@ -256,7 +256,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -345,7 +345,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"})[$__interval])) by (stream)",
           "hide": false,
@@ -358,7 +358,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -417,7 +417,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
           "refId": "A"
@@ -429,7 +429,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -496,7 +496,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) * 100 / sum(count_over_time(({container=\"$container\"})[$__interval]))",
           "hide": false,
@@ -509,7 +509,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -597,7 +597,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
           "refId": "A"
@@ -609,7 +609,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -694,7 +694,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(rate(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[30s])) by (container)",
           "hide": false,
@@ -707,7 +707,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "dem9kdxb52gaod"
+        "uid": "loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -806,7 +806,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "dem9kdxb52gaod"
+            "uid": "loki"
           },
           "expr": "sum(count_over_time(({container=\"$container\"})[$__interval])) by (stream)",
           "hide": false,
@@ -828,7 +828,7 @@
     "list": [
       {
         "current": {},
-        "datasource": "dem9kdxb52gaod",
+        "datasource": "loki",
         "definition": "",
         "includeAll": false,
         "label": "Container",
