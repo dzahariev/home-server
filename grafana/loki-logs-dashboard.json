@@ -832,7 +832,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "loki",
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
         "definition": "",
         "includeAll": true,
         "label": "Container",
