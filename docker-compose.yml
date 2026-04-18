@@ -159,6 +159,7 @@ services:
       - "${MONITORING_DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
     links:
       - prometheus:prometheus
+      - loki:loki
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
@@ -167,6 +168,7 @@ services:
       VIRTUAL_PORT: 3000
     depends_on:
       - prometheus 
+      - loki
       - acme-companion
 
   # QBittorrent container
