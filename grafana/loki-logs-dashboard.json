@@ -840,22 +840,23 @@
           "stream": "{container=~\".+\"}",
           "type": 1
         },
-        "refresh": 2,
+        "refresh": 1,
         "regex": "",
+        "sort": 1,
         "type": "query"
       },
       {
         "current": {
-          "text": "",
-          "value": ""
+          "text": ".*",
+          "value": ".*"
         },
         "label": "Search (case insensitive)",
         "name": "searchable_pattern",
         "options": [
           {
             "selected": true,
-            "text": "",
-            "value": ""
+            "text": ".*",
+            "value": ".*"
           }
         ],
         "query": "",
