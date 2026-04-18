@@ -96,7 +96,7 @@
           },
           "direction": "backward",
           "editorMode": "code",
-          "expr": "sum(count_over_time(({container=\"$container\"})[$__interval]))",
+          "expr": "sum(count_over_time(({container=~\"$container\"})[$__interval]))",
           "hide": false,
           "queryType": "range",
           "refId": "A"
@@ -177,7 +177,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
+          "expr": "sum(count_over_time(({container=~\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
           "hide": false,
           "refId": "A"
         }
@@ -220,7 +220,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "{container=\"$container\"} |~ \"(?i)$searchable_pattern\" ",
+          "expr": "{container=~\"$container\"} |~ \"(?i)$searchable_pattern\" ",
           "hide": false,
           "refId": "A"
         }
@@ -347,7 +347,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"})[$__interval])) by (stream)",
+          "expr": "sum(count_over_time(({container=~\"$container\"})[$__interval])) by (stream)",
           "hide": false,
           "refId": "A"
         }
@@ -419,7 +419,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
+          "expr": "sum(count_over_time(({container=~\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
           "refId": "A"
         }
       ],
@@ -498,7 +498,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) * 100 / sum(count_over_time(({container=\"$container\"})[$__interval]))",
+          "expr": "sum(count_over_time(({container=~\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) * 100 / sum(count_over_time(({container=~\"$container\"})[$__interval]))",
           "hide": false,
           "refId": "A"
         }
@@ -599,7 +599,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
+          "expr": "sum(count_over_time(({container=~\"$container\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (container)",
           "refId": "A"
         }
       ],
@@ -696,7 +696,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(rate(({container=\"$container\"} |~ \"(?i)$searchable_pattern\")[30s])) by (container)",
+          "expr": "sum(rate(({container=~\"$container\"} |~ \"(?i)$searchable_pattern\")[30s])) by (container)",
           "hide": false,
           "refId": "A"
         }
@@ -808,7 +808,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "sum(count_over_time(({container=\"$container\"})[$__interval])) by (stream)",
+          "expr": "sum(count_over_time(({container=~\"$container\"})[$__interval])) by (stream)",
           "hide": false,
           "refId": "A"
         }
@@ -827,10 +827,14 @@
   "templating": {
     "list": [
       {
-        "current": {},
+        "allValue": ".+",
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "loki",
         "definition": "",
-        "includeAll": false,
+        "includeAll": true,
         "label": "Container",
         "name": "container",
         "options": [],
