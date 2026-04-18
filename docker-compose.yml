@@ -137,7 +137,7 @@ services:
     command: -config.file=/etc/loki/loki-config.yaml
 
   promtail:
-    image: grafana/promtail:3.5.0
+    image: grafana/promtail:3.6.10
     container_name: promtail
     restart: always
     volumes:
