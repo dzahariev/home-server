@@ -646,7 +646,7 @@ services:
       - acme-companion
 
   mattermost:
-    image: mattermost/mattermost-team-edition:11.6.0
+    image: mattermost/mattermost-team-edition:11.6.1
     container_name: mattermost
     restart: unless-stopped
     security_opt:
