@@ -8,20 +8,24 @@ dockerHubIsUp() {
 }
 
 shouldCreateArchive() {
+  local CURRENT_DAY=$(date +%d)
+  if (( CURRENT_DAY <= 20 )); then
+    return 1
+  fi
   local CURRENT_YYMM=$(date +%y%m)
-  local EXISTING=$(find "${ARCHIVE_DIR}" -maxdepth 1 -name "${CURRENT_YYMM}*data.tar.bz2" 2>/dev/null)
+  local EXISTING=$(find "${ARCHIVE_DIR}" -maxdepth 1 -type d -name "${CURRENT_YYMM}*data" 2>/dev/null)
   [[ -z "$EXISTING" ]]
 }
 
 createArchive() {
   local ARCHIVE_BASE="$(date +%y%m%d)data"
-  local ARCHIVE_NAME="${ARCHIVE_BASE}.tar.bz2"
+  local ARCHIVE_NAME="${ARCHIVE_BASE}.tgz"
   local WRAPPER_DIR="${ARCHIVE_DIR}/${ARCHIVE_BASE}"
   local ARCHIVE_PATH="${WRAPPER_DIR}/${ARCHIVE_NAME}"
 
   echo "Creating archive ${ARCHIVE_PATH} ..."
   mkdir -p "${WRAPPER_DIR}"
-  sudo tar -cjf "${ARCHIVE_PATH}" -C "$(dirname "${DATA_DIR}")" "$(basename "${DATA_DIR}")"
+  sudo tar -czf "${ARCHIVE_PATH}" -C "$(dirname "${DATA_DIR}")" "$(basename "${DATA_DIR}")"
 
   if [[ $? -eq 0 ]]; then
     echo "Archive created successfully!"
