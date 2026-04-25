@@ -42,7 +42,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -67,7 +67,7 @@
                   "hidden": true,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -189,7 +189,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -308,7 +308,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -334,7 +334,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -470,7 +470,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -618,7 +618,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -739,7 +739,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -764,7 +764,7 @@
                   "hidden": true,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -887,7 +887,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -911,7 +911,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -935,7 +935,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1153,7 +1153,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1275,7 +1275,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1421,7 +1421,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1544,7 +1544,7 @@
                   "hidden": true,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1569,7 +1569,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1704,7 +1704,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1827,7 +1827,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1945,7 +1945,7 @@
                   "hidden": true,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -1971,7 +1971,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2080,7 +2080,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2198,7 +2198,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2317,7 +2317,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2342,7 +2342,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2367,7 +2367,7 @@
                   "hidden": true,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2809,7 +2809,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -2907,7 +2907,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3005,7 +3005,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3026,7 +3026,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3125,7 +3125,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3248,7 +3248,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3371,7 +3371,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3494,7 +3494,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3667,7 +3667,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3766,7 +3766,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3787,7 +3787,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3890,7 +3890,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -3911,7 +3911,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
@@ -4010,7 +4010,7 @@
                   "hidden": false,
                   "query": {
                     "datasource": {
-                      "name": "WTP-C6f7z"
+                      "name": "prometheus"
                     },
                     "group": "prometheus",
                     "kind": "DataQuery",
