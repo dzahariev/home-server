@@ -21,7 +21,7 @@ createArchive() {
 
   echo "Creating archive ${ARCHIVE_PATH} ..."
   mkdir -p "${WRAPPER_DIR}"
-  tar -cjf "${ARCHIVE_PATH}" -C "$(dirname "${DATA_DIR}")" "$(basename "${DATA_DIR}")"
+  sudo tar -cjf "${ARCHIVE_PATH}" -C "$(dirname "${DATA_DIR}")" "$(basename "${DATA_DIR}")"
 
   if [[ $? -eq 0 ]]; then
     echo "Archive created successfully!"
