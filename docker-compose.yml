@@ -157,8 +157,8 @@ services:
     volumes:
       - "${MONITORING_DATA_DIR}/grafana/storage:/var/lib/grafana"
       - "${MONITORING_DATA_DIR}/grafana/provisioning:/etc/grafana/provisioning"
-      - "./grafana/provisioning-datasources.yaml:/etc/grafana/provisioning/datasources/loki.yaml:ro"
-      - "./grafana/provisioning-dashboards.yaml:/etc/grafana/provisioning/dashboards/loki.yaml:ro"
+      - "./grafana/provisioning-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml:ro"
+      - "./grafana/provisioning-dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro"
       - "./grafana:/var/lib/grafana/dashboards:ro"
     links:
       - prometheus:prometheus
