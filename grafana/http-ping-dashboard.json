@@ -44,7 +44,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "WTP-C6f7z"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -132,7 +132,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "WTP-C6f7z"
+            "uid": "prometheus"
           },
           "expr": "probe_duration_seconds",
           "format": "time_series",
@@ -161,7 +161,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "WTP-C6f7z"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {},
@@ -185,7 +185,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "WTP-C6f7z"
+            "uid": "prometheus"
           },
           "expr": "sum by (phase) (probe_http_duration_seconds{instance=~\"$site\"})\n",
           "format": "time_series",
@@ -199,7 +199,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "WTP-C6f7z"
+            "uid": "prometheus"
           },
           "expr": "(1 - probe_success{instance=~\"$site\"} > 0)",
           "format": "time_series",
@@ -231,7 +231,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "WTP-C6f7z"
+          "uid": "prometheus"
         },
         "definition": "",
         "includeAll": true,
