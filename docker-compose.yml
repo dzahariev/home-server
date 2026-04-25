@@ -100,7 +100,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention.time=10d'
+      - '--storage.tsdb.retention.time=180d'
     volumes:
       - "./prometheus:/etc/prometheus"
       - "${MONITORING_DATA_DIR}/prometheus/data:/prometheus"
