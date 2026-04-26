@@ -285,7 +285,7 @@ services:
       POSTGRES_PASSWORD: ${MEALIE_DB_PASSWORD}
     command: ["-p", "${MEALIE_DB_PORT}"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${MEALIE_DB_USER} -p ${MEALIE_DB_PORT}"]
+      test: ["CMD-SHELL", "pg_isready -U ${MEALIE_DB_USER} -d ${MEALIE_DB_NAME} -p ${MEALIE_DB_PORT}"]
       interval: 3s
       timeout: 1s
       retries: 10
@@ -313,6 +313,7 @@ services:
       POSTGRES_PORT: ${MEALIE_DB_PORT}
       POSTGRES_DB: ${MEALIE_DB_NAME}
       ALLOW_SIGNUP: "false"
+      LOG_LEVEL: WARNING
       PUID: 1000
       PGID: 1000
       TZ: Europe/Sofia
@@ -358,6 +359,7 @@ services:
     environment:
       SECURITY_ENABLELOGIN: true
       LANGS: en_GB
+      LOGGING_LEVEL_ROOT: WARN
       VIRTUAL_HOST: stirling.${ROOT_HOST}
       LETSENCRYPT_HOST: stirling.${ROOT_HOST}
       VIRTUAL_PORT: 8080
@@ -432,7 +434,7 @@ services:
       POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
     command: ["-p", "${KEYCLOAK_DB_PORT}"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER} -p ${KEYCLOAK_DB_PORT}"]
+      test: ["CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER} -d ${KEYCLOAK_DB_NAME} -p ${KEYCLOAK_DB_PORT}"]
       interval: 3s
       timeout: 1s
       retries: 10
@@ -513,7 +515,7 @@ services:
       POSTGRES_PASSWORD: ${DOMO_DB_PASSWORD}
     command: ["-p", "${DOMO_DB_PORT}"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER} -p ${DOMO_DB_PORT}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DOMO_DB_USER} -d ${DOMO_DB_NAME} -p ${DOMO_DB_PORT}"]
       interval: 3s
       timeout: 1s
       retries: 10
@@ -639,7 +641,7 @@ services:
       POSTGRES_PASSWORD: ${MMOST_DB_PASSWORD}
     command: ["-p", "${MMOST_DB_PORT}"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${MMOST_DB_USER} -p ${MMOST_DB_PORT}"]
+      test: ["CMD-SHELL", "pg_isready -U ${MMOST_DB_USER} -d ${MMOST_DB_NAME} -p ${MMOST_DB_PORT}"]
       interval: 3s
       timeout: 1s
       retries: 10
@@ -669,6 +671,7 @@ services:
       MM_SQLSETTINGS_DATASOURCE: postgres://${MMOST_DB_USER}:${MMOST_DB_PASSWORD}@mattermostdb:${MMOST_DB_PORT}/${MMOST_DB_NAME}?sslmode=disable&connect_timeout=10
       MM_BLEVESETTINGS_INDEXDIR: /mattermost/bleve-indexes
       MM_SERVICESETTINGS_SITEURL: https://mattermost.${ROOT_HOST}
+      MM_LOGSETTINGS_CONSOLELEVEL: WARN
       VIRTUAL_HOST: mattermost.${ROOT_HOST}
       LETSENCRYPT_HOST: mattermost.${ROOT_HOST}
       VIRTUAL_PORT: 8065
