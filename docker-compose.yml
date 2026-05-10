@@ -649,7 +649,7 @@ services:
       - acme-companion
 
   mattermost:
-    image: mattermost/mattermost-team-edition:11.6.1
+    image: mattermost/mattermost-team-edition:11.7.0
     container_name: mattermost
     restart: unless-stopped
     security_opt:
