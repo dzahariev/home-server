@@ -200,6 +200,25 @@ services:
     depends_on:
       - acme-companion
 
+  # Bazzar container
+  bazzar:
+    image: linuxserver/bazarr:1.5.6
+    container_name: bazarr
+    restart: always
+    hostname:
+      bazarr.${ROOT_HOST}
+    volumes:
+      - "${DATA_DIR}/bazarr/config:/config"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Sofia
+      VIRTUAL_HOST: bazarr.${ROOT_HOST}
+      LETSENCRYPT_HOST: bazarr.${ROOT_HOST}
+      VIRTUAL_PORT: 6767
+    depends_on:
+      - acme-companion
+
   # Files Browser container
   files:
     image: filebrowser/filebrowser:v2.63.3
