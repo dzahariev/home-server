@@ -427,7 +427,7 @@ services:
     expose:
       - "${KEYCLOAK_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/keycloakdb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/keycloakdb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${KEYCLOAK_DB_NAME}
       POSTGRES_USER: ${KEYCLOAK_DB_USER}
