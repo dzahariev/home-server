@@ -272,13 +272,13 @@ services:
 
   # Postgres DB container for Mealie
   mealiedb:
-    image: postgres:17.5-alpine3.20
+    image: postgres:18.4-alpine3.22
     container_name: mealiedb
     restart: always
     expose:
       - "${MEALIE_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/mealiedb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/mealiedb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${MEALIE_DB_NAME}
       POSTGRES_USER: ${MEALIE_DB_USER}
