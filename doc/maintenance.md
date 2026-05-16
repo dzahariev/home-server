@@ -74,12 +74,12 @@ docker compose --env-file .env.server up -d
 ## Upgrade mattermostdb
 ```
 docker compose --env-file .env.server up -d mattermostdb
-docker compose --env-file .env.server exec mattermostdb pg_dumpall -p 5832 -U mattermostdb > dumpmm.sql
+docker compose --env-file .env.server exec mattermostdb pg_dumpall -p 5832 -U mattermostuser > dumpmm.sql
 docker compose --env-file .env.server down
 // Manually delete old data folder
 // Manually increase version in docker-compose
 docker compose --env-file .env.server up -d mattermostdb
-cat dumpmm.sql | docker exec -i mattermostdb psql -p 5832 -U mattermostdb
+cat dumpmm.sql | docker exec -i mattermostdb psql -p 5832 -U mattermostuser
 docker compose --env-file .env.server down
 docker compose --env-file .env.server up -d
 ```
