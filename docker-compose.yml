@@ -289,8 +289,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Mealie container
   mealie:
@@ -322,7 +320,10 @@ services:
       LETSENCRYPT_HOST: mealie.${ROOT_HOST}
       VIRTUAL_PORT: 9000
     depends_on:
-      - mealiedb
+      acme-companion:
+          condition: service_started
+      mealiedb:
+          condition: service_healthy
 
   # FreshRSS container
   freshrss:
@@ -438,8 +439,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Keycloak container
   keycloak:
@@ -474,6 +473,8 @@ services:
       retries: 60
       start_period: 400s
     depends_on:
+      acme-companion:
+          condition: service_started
       keycloakdb:
           condition: service_healthy
 
@@ -519,9 +520,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      keycloak:
-        condition: service_healthy
 
   # DB migrations for Domo
   domo-migrations:
@@ -564,6 +562,7 @@ services:
       LETSENCRYPT_HOST: domo.${ROOT_HOST}
       VIRTUAL_PORT: 8800
     depends_on:
+      - acme-companion
       - domo-migrations
 
   # TaskBoard container
@@ -645,8 +644,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   mattermost:
     image: mattermost/mattermost-team-edition:11.7.0
@@ -676,4 +673,7 @@ services:
       LETSENCRYPT_HOST: mattermost.${ROOT_HOST}
       VIRTUAL_PORT: 8065
     depends_on:
-      - mattermostdb
+      acme-companion:
+          condition: service_started
+      mattermostdb:
+          condition: service_healthy
