@@ -344,25 +344,17 @@ services:
     depends_on:
       - acme-companion
   
-  # Stirling PDF container
-  stirling:
-    image: stirlingtools/stirling-pdf:2.10.1
-    container_name: stirling
+  # Bento PDF container
+  bento:
+    image: bentopdfteam/bentopdf-simple:2.8.4
+    container_name: bento
     restart: always
     hostname:
-      stirling.${ROOT_HOST}
-    volumes:
-      - "${DATA_DIR}/stirling/trainingData:/usr/share/tessdata"
-      - "${DATA_DIR}/stirling/extraConfigs:/configs"
-      - "${DATA_DIR}/stirling/customFiles:/customFiles"
-      - "${DATA_DIR}/stirling/logs:/logs"
-      - "${DATA_DIR}/stirling/pipeline:/pipeline"
+      bento.${ROOT_HOST}
     environment:
-      SECURITY_ENABLELOGIN: true
-      LANGS: en_GB
-      LOGGING_LEVEL_ROOT: WARN
-      VIRTUAL_HOST: stirling.${ROOT_HOST}
-      LETSENCRYPT_HOST: stirling.${ROOT_HOST}
+      DISABLE_IPV6: true
+      VIRTUAL_HOST: bento.${ROOT_HOST}
+      LETSENCRYPT_HOST: bento.${ROOT_HOST}
       VIRTUAL_PORT: 8080
     depends_on:
       - acme-companion
