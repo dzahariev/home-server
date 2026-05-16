@@ -272,13 +272,13 @@ services:
 
   # Postgres DB container for Mealie
   mealiedb:
-    image: postgres:17.5-alpine3.20
+    image: postgres:18.4-alpine3.22
     container_name: mealiedb
     restart: always
     expose:
       - "${MEALIE_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/mealiedb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/mealiedb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${MEALIE_DB_NAME}
       POSTGRES_USER: ${MEALIE_DB_USER}
@@ -289,8 +289,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Mealie container
   mealie:
@@ -322,7 +320,10 @@ services:
       LETSENCRYPT_HOST: mealie.${ROOT_HOST}
       VIRTUAL_PORT: 9000
     depends_on:
-      - mealiedb
+      acme-companion:
+          condition: service_started
+      mealiedb:
+          condition: service_healthy
 
   # FreshRSS container
   freshrss:
@@ -421,13 +422,13 @@ services:
 
   # Postgres DB container for Keycloak
   keycloakdb:
-    image: postgres:17.5-alpine3.20
+    image: postgres:18.4-alpine3.22
     container_name: keycloakdb
     restart: always
     expose:
       - "${KEYCLOAK_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/keycloakdb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/keycloakdb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${KEYCLOAK_DB_NAME}
       POSTGRES_USER: ${KEYCLOAK_DB_USER}
@@ -438,8 +439,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   # Keycloak container
   keycloak:
@@ -450,6 +449,8 @@ services:
       - keycloakdb:keycloakdb
     command:
       - 'start'
+    volumes:
+      - keycloak-cache:/opt/keycloak/lib/quarkus
     environment:
       KC_DB: postgres
       KC_DB_USERNAME: ${KEYCLOAK_DB_USER}
@@ -474,6 +475,8 @@ services:
       retries: 60
       start_period: 400s
     depends_on:
+      acme-companion:
+          condition: service_started
       keycloakdb:
           condition: service_healthy
 
@@ -502,13 +505,13 @@ services:
 
   # Postgres DB container for Domo
   domodb:
-    image: postgres:17.5-alpine3.20
+    image: postgres:18.4-alpine3.22
     container_name: domodb
     restart: always
     expose:
       - "${DOMO_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/domodb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/domodb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${DOMO_DB_NAME}
       POSTGRES_USER: ${DOMO_DB_USER}
@@ -519,9 +522,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      keycloak:
-        condition: service_healthy
 
   # DB migrations for Domo
   domo-migrations:
@@ -564,6 +564,7 @@ services:
       LETSENCRYPT_HOST: domo.${ROOT_HOST}
       VIRTUAL_PORT: 8800
     depends_on:
+      - acme-companion
       - domo-migrations
 
   # TaskBoard container
@@ -628,13 +629,13 @@ services:
 
   # Postgres DB container for Mattermost
   mattermostdb:
-    image: postgres:17.5-alpine3.20
+    image: postgres:18.4-alpine3.22
     container_name: mattermostdb
     restart: always
     expose:
       - "${MMOST_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/mattermostdb:/var/lib/postgresql/data"
+      - "${DATA_DIR}/mattermostdb:/var/lib/postgresql"
     environment: 
       POSTGRES_DB: ${MMOST_DB_NAME}
       POSTGRES_USER: ${MMOST_DB_USER}
@@ -645,8 +646,6 @@ services:
       interval: 3s
       timeout: 1s
       retries: 10
-    depends_on:
-      - acme-companion
 
   mattermost:
     image: mattermost/mattermost-team-edition:11.7.0
@@ -676,4 +675,10 @@ services:
       LETSENCRYPT_HOST: mattermost.${ROOT_HOST}
       VIRTUAL_PORT: 8065
     depends_on:
-      - mattermostdb
+      acme-companion:
+          condition: service_started
+      mattermostdb:
+          condition: service_healthy
+
+volumes:
+  keycloak-cache:
