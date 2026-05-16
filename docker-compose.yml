@@ -450,7 +450,7 @@ services:
     command:
       - 'start'
     volumes:
-      - "${DATA_DIR}/keycloak:/opt/keycloak/lib/quarkus"
+      - keycloak-cache:/opt/keycloak/lib/quarkus
     environment:
       KC_DB: postgres
       KC_DB_USERNAME: ${KEYCLOAK_DB_USER}
@@ -679,3 +679,6 @@ services:
           condition: service_started
       mattermostdb:
           condition: service_healthy
+
+volumes:
+  keycloak-cache:
