@@ -22,7 +22,7 @@ Include setup of:
 - Mealie (on mealie subdomain)
 - Calibre (on calibre subdomain)
 - FreshRSS (on freshrss subdomain)
-- Stirling-PDF (on stirling subdomain)
+- Bento PDF (on bento subdomain)
 - Changedetection (on changedetection subdomain)
 - ConvertX (on convertx subdomain)
 - PostgeSQL (not exposed, used through internal network)
