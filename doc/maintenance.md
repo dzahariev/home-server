@@ -35,12 +35,12 @@ Here are the sequence of commands how to export/import all data from each one of
 ## Upgrade keycloakdb
 ```
 docker compose --env-file .env.server up -d keycloakdb
-docker compose --env-file .env.server exec keycloakdb pg_dumpall -U postgre > dumpk.sql
+docker compose --env-file .env.server exec keycloakdb pg_dumpall -p 5732 -U postgre > dumpk.sql
 docker compose --env-file .env.server down
 // Manually delete old data folder
 // Manually increase version in docker-compose
 docker compose --env-file .env.server up -d keycloakdb
-cat dumpk.sql | docker exec -i keycloakdb psql -U postgre
+cat dumpk.sql | docker exec -i keycloakdb psql -p 5732 -U postgre
 docker compose --env-file .env.server down
 docker compose --env-file .env.server up -d
 ```
@@ -67,6 +67,19 @@ docker compose --env-file .env.server down
 // Manually increase version in docker-compose
 docker compose --env-file .env.server up -d domodb
 cat dumpd.sql | docker exec -i domodb psql -p 5532 -U domodb
+docker compose --env-file .env.server down
+docker compose --env-file .env.server up -d
+```
+
+## Upgrade mattermostdb
+```
+docker compose --env-file .env.server up -d mattermostdb
+docker compose --env-file .env.server exec mattermostdb pg_dumpall -p 5832 -U mattermostdb > dumpmm.sql
+docker compose --env-file .env.server down
+// Manually delete old data folder
+// Manually increase version in docker-compose
+docker compose --env-file .env.server up -d mattermostdb
+cat dumpmm.sql | docker exec -i mattermostdb psql -p 5832 -U mattermostdb
 docker compose --env-file .env.server down
 docker compose --env-file .env.server up -d
 ```
