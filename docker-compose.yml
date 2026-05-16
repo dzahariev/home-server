@@ -402,7 +402,7 @@ services:
 
   # YouTrack container
   youtrack:
-    image: jetbrains/youtrack:2026.1.13456
+    image: jetbrains/youtrack:2026.1.13559
     container_name: youtrack
     restart: always
     hostname:
