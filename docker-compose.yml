@@ -502,13 +502,13 @@ services:
 
   # Postgres DB container for Domo
   domodb:
-    image: postgres:18.4-alpine3.22
+    image: postgres:17.5-alpine3.20
     container_name: domodb
     restart: always
     expose:
       - "${DOMO_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/domodb:/var/lib/postgresql"
+      - "${DATA_DIR}/domodb:/var/lib/postgresql/data"
     environment: 
       POSTGRES_DB: ${DOMO_DB_NAME}
       POSTGRES_USER: ${DOMO_DB_USER}
@@ -628,13 +628,13 @@ services:
 
   # Postgres DB container for Mattermost
   mattermostdb:
-    image: postgres:18.4-alpine3.22
+    image: postgres:17.5-alpine3.20
     container_name: mattermostdb
     restart: always
     expose:
       - "${MMOST_DB_PORT}" 
     volumes:
-      - "${DATA_DIR}/mattermostdb:/var/lib/postgresql"
+      - "${DATA_DIR}/mattermostdb:/var/lib/postgresql/data"
     environment: 
       POSTGRES_DB: ${MMOST_DB_NAME}
       POSTGRES_USER: ${MMOST_DB_USER}
