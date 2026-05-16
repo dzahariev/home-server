@@ -449,6 +449,8 @@ services:
       - keycloakdb:keycloakdb
     command:
       - 'start'
+    volumes:
+      - "${DATA_DIR}/keycloak:/opt/keycloak/lib/quarkus"
     environment:
       KC_DB: postgres
       KC_DB_USERNAME: ${KEYCLOAK_DB_USER}
