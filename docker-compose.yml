@@ -346,7 +346,7 @@ services:
   
   # Bento PDF container
   bento:
-    image: bentopdfteam/bentopdf-simple:2.8.4
+    image: bentopdfteam/bentopdf-simple:2.8.5
     container_name: bento
     restart: always
     hostname:
