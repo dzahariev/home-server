@@ -177,7 +177,7 @@ services:
 
   # QBittorrent container
   qbittorrent:
-    image: linuxserver/qbittorrent:5.2.0
+    image: linuxserver/qbittorrent:5.2.1
     container_name: qbittorrent
     restart: always
     hostname:
