@@ -605,7 +605,7 @@ services:
 
   # georgi container
   georgi:
-    image: georgizahariev/portfolio:0.0.6
+    image: georgizahariev/portfolio:0.0.7
     container_name: georgi
     restart: always
     hostname:
