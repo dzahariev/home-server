@@ -1,3 +1,6 @@
+# Note
+The project is no longer active. It is replaced by https://github.com/dzahariev/home-lab
+
 # home-server
 
 ## What is this about?
